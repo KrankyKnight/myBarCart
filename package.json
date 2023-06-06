@@ -24,5 +24,15 @@
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "serve": "webpack serve"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "express": "^4.18.2",
+    "mogodb": "^0.0.1-security",
+    "mongoose": "^7.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.7",
+    "redux": "^4.2.1"
   }
 }
