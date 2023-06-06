@@ -10,6 +10,9 @@ const PORT = 3000;
 app.use(express.json())
 
 //serve static files
+app.get('/', (req, res) => {
+  return res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
+})
 
 //define routes
 
@@ -30,3 +33,5 @@ const globalError = app.use((err, req, res) => {
   console.log('Error: ', errorObject.log);
   return res.status(errObj.status || 500).json(errObj.message);
 })
+
+module.exports = app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

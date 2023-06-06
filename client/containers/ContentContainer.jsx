@@ -1,0 +1,1 @@
+// @description: The main view window that displays ingredients or recipes and displays the pantry list
