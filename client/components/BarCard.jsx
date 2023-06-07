@@ -4,8 +4,8 @@ import React from 'react';
 
 const Pantry = () => {
   return(
-    <ul className='pantry'>
-      <h3>Pantry Items</h3>
+    <ul>
+      <h3>BarrrrCard</h3>
     </ul>
   )
 }

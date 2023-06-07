@@ -1,34 +1,31 @@
-body {
+.mainContainer {
+  width: 100vw;
   height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-areas:
+
+    'o o o o'
+    'b v v v'
+    'b v v v'
+    'b v v v'
+    'b v v v'
+    'b v v v'
+
+  ;
 }
 
 .options {
-  height: 15vh;
-  width: 100%;
-  border: 3px solid black;
-  border-radius: 20px;
+  grid-area: o;
+  border: 1px solid black;
 }
 
-.content {
-  height: 85vh;
-}
-
-.container {
-  // border: 1px solid red;
-}
-
-.flexContent {
-  display: flex;
-}
-
-.pantry {
-  width: 20vw;
-  border: 3px solid black;
-  border-radius: 20px;
+.bar {
+  grid-area: b;
+  border: 1px solid black;
 }
 
 .view {
-  width: 80vw;
-  border: 3px solid black;
-  border-radius: 20px;
+  grid-area: v;
+  border: 1px solid black;
 }

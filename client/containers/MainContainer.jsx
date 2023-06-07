@@ -1,14 +1,16 @@
 // @description: Contains the app
 
 import React from 'react';
-import ContentContainer from './ContentContainer.jsx';
-import Options from '../components/Options.jsx';
+import BarContainer from './BarContainer.jsx'
+import OptionsContainer from './OptionsContainer.jsx';
+import CurrentViewContainer from './CurrentViewContainer.jsx';
 
 const MainContainer = () => {
   return(
-    <div className='container'>
-      <Options/>
-      <ContentContainer/>
+    <div className='mainContainer'>
+      <OptionsContainer/>
+      <BarContainer/>
+      <CurrentViewContainer/>
     </div>
   )
 }
