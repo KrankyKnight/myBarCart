@@ -5,7 +5,12 @@ import Pantry from '../components/Pantry.jsx';
 import CurrentViewContainer from './CurrentViewContainer.jsx';
 
 const ContentContainer = () => {
-
+  return(
+    <div className='container content flexContent'>
+      <Pantry/>
+      <CurrentViewContainer/>
+    </div>
+  )
 }
 
 export default ContentContainer;

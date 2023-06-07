@@ -3,7 +3,11 @@
 import React from 'react';
 
 const RecipeCard = () => {
-
+  return(
+    <div>
+      I'm going to be a recipe!
+    </div>
+  )
 }
 
 export default RecipeCard;

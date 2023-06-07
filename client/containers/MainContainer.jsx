@@ -6,11 +6,10 @@ import Options from '../components/Options.jsx';
 
 const MainContainer = () => {
   return(
-    <>
-      <h1>myPantry</h1>
+    <div className='container'>
       <Options/>
       <ContentContainer/>
-    </>
+    </div>
   )
 }
 

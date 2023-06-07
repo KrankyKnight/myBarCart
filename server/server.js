@@ -1,22 +1,29 @@
+//reminder npx nodemon
 const path = require('path');
 const express = require('express');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 //require routers as developed
+console.log('in router')
 
 //handle parsing body request
 app.use(express.json())
 
-//serve static files
+//serve static files from build
+app.use('/', express.static(path.join(__dirname, '../build')));
+
+//serve static files if build request fails
 app.get('/', (req, res) => {
+  console.log('in base request')
   return res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
 })
 
-//define routes
+app.use('/ingredients', (req, res) => {
+  return res.status(200).json({});
+})
 
-//initial get request for html
 
 /* ERRORS */
 //catch-all error handler for unknown requests
