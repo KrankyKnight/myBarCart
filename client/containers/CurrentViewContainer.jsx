@@ -6,11 +6,7 @@ import RecipeCard from '../components/RecipeCard.jsx';
 import IngredientCard from '../components/IngredientCard.jsx';
 
 //display must be rendered based on a state
-const CurrentViewContainer = () => {
-
-  //set the view with useSelector hook
-  const currentMode = useSelector((state) => state.bar.viewMode)
-  console.log('currentMode', currentMode);
+const CurrentViewContainer = ({currentMode, allIngredients}) => {
 
   //mode none
   if( currentMode === 'none') {
@@ -19,13 +15,24 @@ const CurrentViewContainer = () => {
         No data
     </div>
     )
-  } else if ( currentMode === 'ingredients' ) {
+  } 
+  //mode for viewing ingredients
+  else if ( currentMode === 'ingredients' ) {
+    const viewOutput = [];
+    let count = 0;
+    for(const ingredient of allIngredients) {
+      count++;
+      viewOutput.push(<IngredientCard key={`ingredient${count}`} name={ingredient}/>)
+    }
     return (
      <div className='view'>
-        <IngredientCard/>
+        {viewOutput}
       </div>
     )
-  } else if (currentMode === 'recipes') {
+  } 
+  
+  //mode for viewing recipes
+  else if (currentMode === 'recipes') {
     return (
       <div className='view'>
          <RecipeCard/>

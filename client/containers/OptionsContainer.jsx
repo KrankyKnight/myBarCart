@@ -5,11 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getIngredients } from '../actions/actions';
 
 
-const Options = () => {
-
-  //Hook calls
-  const dispatch = useDispatch();
-  const curState = useSelector(state => state.bar);
+const Options = ({dispatch, curState}) => {
 
   const getIngList = (event) => {
     event.preventDefault();

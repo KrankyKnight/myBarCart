@@ -2,10 +2,10 @@
 
 import React from 'react';
 
-const IngredientCard = () => {
+const IngredientCard = ({name}) => {
   return(
-    <div>
-      I'm going to be ingredients!
+    <div className='ingredientCard'>
+      {name}
     </div>
   )
 }

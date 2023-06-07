@@ -17,15 +17,33 @@
 
 .options {
   grid-area: o;
+  height: 15vh;
   border: 1px solid black;
 }
 
 .bar {
   grid-area: b;
+  width: 20vw;
   border: 1px solid black;
 }
 
 .view {
+  display: flex;
+  justify-content:flex-start;
+  flex-wrap: wrap;
   grid-area: v;
   border: 1px solid black;
+  overflow-y: scroll;
+}
+
+.ingredientCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 3em;
+  width: 7em;
+  margin: 1em;
 }
