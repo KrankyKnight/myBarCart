@@ -2,5 +2,4 @@
 
 import { createAction } from "@reduxjs/toolkit";
 
-export const getIngredients = createAction('GET_INGREDIENTS', () => {
-})
+export const getIngredients = createAction('GET_INGREDIENTS')

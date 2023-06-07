@@ -5,7 +5,7 @@ import React from 'react';
 const RecipeCard = () => {
   return(
     <div>
-      I'm going to be a recipe!
+      I'm going to be recipes!
     </div>
   )
 }

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import pantryReducer from './pantryReducer.js';
+import barReducer from './barReducer.js';
 
 const reducers = combineReducers({
-  pantry: pantryReducer,
+  bar: barReducer,
 });
 
 export default reducers;

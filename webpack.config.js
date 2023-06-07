@@ -14,8 +14,11 @@ module.exports = {
         directory: path.join(__dirname, 'build'),
         publicPath: '/server.js',
       },
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
       proxy: {
-        '/api': 'http://localhost:8080',
+        '/api': 'http://localhost:3000',
       }
     },
     module : {
