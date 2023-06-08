@@ -14,6 +14,7 @@ const MainContainer = () => {
   const allIngredients = useSelector(state => state.bar.ingredientSearch);
   const currentMode = useSelector((state) => state.bar.viewMode);
   const cart = useSelector((state) => state.bar.cart);
+  const recipes = useSelector(state => state.bar.recipes);
 
   /* THE CONTENT */
   //first generate cart state from db
@@ -30,7 +31,7 @@ const MainContainer = () => {
     <div className='mainContainer'>
       <OptionsContainer dispatch={dispatch} curState = {curState}/>
       <BarContainer cart={cart} dispatch={dispatch}/>
-      <CurrentViewContainer currentMode={currentMode} allIngredients={allIngredients} dispatch={dispatch}/>
+      <CurrentViewContainer currentMode={currentMode} allIngredients={allIngredients} dispatch={dispatch} recipes={recipes}/>
     </div>
   )
 }

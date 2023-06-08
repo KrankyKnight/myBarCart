@@ -4,6 +4,7 @@ import { createReducer } from '@reduxjs/toolkit';
 const initialState = {
   viewMode: 'none',
   ingredientSearch: [],
+  recipes: undefined,
   cart: undefined,
 }
 
@@ -42,6 +43,21 @@ const barReducer = createReducer(initialState, (builder) => {
         newCart.push(ingredient);
       }
       state.cart = newCart.sort();
+    })
+
+    .addCase(actions.pendingRecipes, (state, action) => {
+      console.log('calling pending recipes action');
+      state.viewMode = 'recipes';
+      state.recipes = 'pending';
+    })
+
+    .addCase(actions.getRecipes, (state, action) => {
+      console.log('calling get recipes action with ', action.payload)
+      if(action.payload === 'no results') {
+        state.recipes = [];
+      } else {
+        state.recipes = action.payload;
+      }
     })
 
     .addDefaultCase((state) => state);

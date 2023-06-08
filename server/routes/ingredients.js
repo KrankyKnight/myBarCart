@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const apiController = require('../controllers/apiController.js')
-const cartController = require('../controllers/cartController.js')
+const apiController = require('../controllers/apiController.js');
+const cartController = require('../controllers/cartController.js');
+const recipeController = require('../controllers/recipeController.js');
+
+router.get('/getRecipes', recipeController.getRecipes, (req, res) => {
+  return res.status(200).json(res.locals.recipes);
+})
 
 //initialized at the start of the app to populate bar cart
 router.get('/initialCart', cartController.initialCart, (req, res) => {
@@ -17,7 +22,8 @@ router.get('/', apiController.getAllIngredients, (req, res) => {
 
 //route to middleware to add items to bar cart
 router.post('/', cartController.addToCart, (req, res) => {
-  return res.status(200).json(res.locals.newCart);
+  console.log('returning cart results');
+  res.status(200).json(res.locals.newCart);
 })
 
 //route to middleware to remove ingredient from bar cart
