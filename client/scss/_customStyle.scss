@@ -5,12 +5,8 @@
   display: grid;
   grid-template-areas:
 
-    'o o o o'
-    'b v v v'
-    'b v v v'
-    'b v v v'
-    'b v v v'
-    'b v v v'
+    'o o'
+    'b v'
 
   ;
 }
@@ -23,15 +19,25 @@
 
 .bar {
   grid-area: b;
-  width: 20vw;
+  min-width: 20vw;
+  max-width: 25vw;
+  height: 85vh;
   border: 1px solid black;
 }
 
+//base style for view port
 .view {
+  min-width: 75vw;
+  max-width: 80vw;
+  height: 85vh;
+  grid-area: v;
+}
+
+//view when in ingredients mode
+.ingredients {
   display: flex;
   justify-content:flex-start;
   flex-wrap: wrap;
-  grid-area: v;
   border: 1px solid black;
   overflow-y: scroll;
 }
@@ -45,5 +51,5 @@
   border-radius: 10px;
   height: 3em;
   width: 7em;
-  margin: 1em;
+  margin: .5em;
 }

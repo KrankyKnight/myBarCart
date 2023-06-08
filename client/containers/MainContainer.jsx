@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import BarContainer from './BarContainer.jsx'
 import OptionsContainer from './OptionsContainer.jsx';
 import CurrentViewContainer from './CurrentViewContainer.jsx';
+import { initializeCart } from '../actions/actions.js';
 
 const MainContainer = () => {
   /* THE HOOKS */
@@ -12,13 +13,24 @@ const MainContainer = () => {
   const curState = useSelector(state => state.bar);
   const allIngredients = useSelector(state => state.bar.ingredientSearch);
   const currentMode = useSelector((state) => state.bar.viewMode);
+  const cart = useSelector((state) => state.bar.cart);
 
   /* THE CONTENT */
+  //first generate cart state from db
+  if(cart === undefined) {
+    fetch('http://localhost:3000/ingredients/initialCart')
+      .then(data => data.json())
+      .then(data => {
+        dispatch(initializeCart(data))
+      })
+      .catch(err => console.log(`Error intitializing cart: ${err}`))
+  }
+
   return(
     <div className='mainContainer'>
       <OptionsContainer dispatch={dispatch} curState = {curState}/>
-      <BarContainer/>
-      <CurrentViewContainer currentMode={currentMode} allIngredients={allIngredients}/>
+      <BarContainer cart={cart}/>
+      <CurrentViewContainer currentMode={currentMode} allIngredients={allIngredients} dispatch={dispatch}/>
     </div>
   )
 }

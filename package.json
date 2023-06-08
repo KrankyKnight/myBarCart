@@ -30,6 +30,7 @@
     "axios": "^1.4.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "fs": "^0.0.1-security",
     "mogodb": "^0.0.1-security",
     "mongoose": "^7.2.2",
     "node-fetch": "^2.6.11",

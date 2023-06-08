@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-const Pantry = () => {
+const Pantry = ({name}) => {
   return(
-    <ul>
-      <h3>BarrrrCard</h3>
-    </ul>
+    <li>
+      {name}
+    </li>
   )
 }
 

@@ -6,7 +6,7 @@ import RecipeCard from '../components/RecipeCard.jsx';
 import IngredientCard from '../components/IngredientCard.jsx';
 
 //display must be rendered based on a state
-const CurrentViewContainer = ({currentMode, allIngredients}) => {
+const CurrentViewContainer = ({currentMode, allIngredients, dispatch}) => {
 
   //mode none
   if( currentMode === 'none') {
@@ -22,10 +22,10 @@ const CurrentViewContainer = ({currentMode, allIngredients}) => {
     let count = 0;
     for(const ingredient of allIngredients) {
       count++;
-      viewOutput.push(<IngredientCard key={`ingredient${count}`} name={ingredient}/>)
+      viewOutput.push(<IngredientCard key={`ingredient${count}`} name={ingredient} dispatch={dispatch}/>)
     }
     return (
-     <div className='view'>
+     <div className={`view ${currentMode}`}>
         {viewOutput}
       </div>
     )

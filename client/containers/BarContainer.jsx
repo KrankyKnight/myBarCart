@@ -3,10 +3,25 @@
 import React from 'react';
 import BarCard from '../components/BarCard.jsx';
 
-const ContentContainer = () => {
+const ContentContainer = ({cart}) => {
+  if(cart === undefined) {
+    return(
+      <div className='bar'>
+        Loading Cart
+      </div>
+    )
+  }
+  const newCart = [];
+  let count = 0;
+  for(const ingredient of cart) {
+    count++;
+    newCart.push(<BarCard key={`cart${count}`} name={ingredient}/>)
+  }
   return(
     <div className='bar'>
-      <BarCard/>
+      <ul>
+        {newCart}
+      </ul>
     </div>
   )
 }

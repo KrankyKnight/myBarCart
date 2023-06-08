@@ -28,7 +28,6 @@ app.get('/', (req, res) => {
 
 app.use('/ingredients', ingredientsRouter)
 
-
 /* ERRORS */
 //catch-all error handler for unknown requests
 app.use((req, res) => res.status(404))
@@ -42,7 +41,7 @@ const globalError = app.use((err, req, res) => {
   };
   const errorObject = Object.assign(defaultError, err);
   console.log('Error: ', errorObject.log);
-  return res.status(errObj.status || 500).json(errObj.message);
+  return res.status(errorObject.status || 500).json(errorObject.message);
 })
 
 module.exports = app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
