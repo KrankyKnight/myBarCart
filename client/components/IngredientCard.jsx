@@ -16,7 +16,8 @@ const IngredientCard = ({name, dispatch}) => {
       body: JSON.stringify({ ingredient: event.target.innerText}),
     })
     .then(data => data.json())
-    .then(data => dispatch(updateCart(data)));
+    .then(data => dispatch(updateCart(data)))
+    .catch(err => console.log(`Error: ${err}`));
   }
 
   return(

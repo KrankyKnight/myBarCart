@@ -3,7 +3,7 @@
 import React from 'react';
 import BarCard from '../components/BarCard.jsx';
 
-const ContentContainer = ({cart}) => {
+const ContentContainer = ({cart, dispatch}) => {
   if(cart === undefined) {
     return(
       <div className='bar'>
@@ -15,7 +15,7 @@ const ContentContainer = ({cart}) => {
   let count = 0;
   for(const ingredient of cart) {
     count++;
-    newCart.push(<BarCard key={`cart${count}`} name={ingredient}/>)
+    newCart.push(<BarCard key={`cart${count}`} name={ingredient} dispatch={dispatch}/>)
   }
   return(
     <div className='bar'>

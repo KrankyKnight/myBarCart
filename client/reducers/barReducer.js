@@ -36,6 +36,14 @@ const barReducer = createReducer(initialState, (builder) => {
       state.cart = newCart.sort();
     })
 
+    .addCase(actions.deleteCard, (state, action) => {
+      const newCart = []
+      for (const ingredient in action.payload) {
+        newCart.push(ingredient);
+      }
+      state.cart = newCart.sort();
+    })
+
     .addDefaultCase((state) => state);
 })
 

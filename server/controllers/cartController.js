@@ -2,6 +2,7 @@ const cartController = {};
 const path = require('path');
 const fs = require('fs/promises');
 
+//method for initializing cart on load gtom the db
 cartController.initialCart = (req, res, next) => {
   // console.log('in initial cart');
   fs.readFile(path.resolve(__dirname, '../db/barList.json'))
@@ -16,6 +17,7 @@ cartController.initialCart = (req, res, next) => {
     }))
 }
 
+//method for adding an ingredient to the db
 cartController.addToCart = (req, res, next) => {
   const {ingredient} = req.body;
   //get database
@@ -29,7 +31,7 @@ cartController.addToCart = (req, res, next) => {
         res.locals.newCart = data;
         fs.writeFile(path.resolve(__dirname, '../db/barList.json'),
         JSON.stringify(data), 'UTF-8')
-        .then(data => next())
+          .then(() => next())
       } else {
         //if not return old cart
         res.locals.newCart = data;
@@ -38,6 +40,30 @@ cartController.addToCart = (req, res, next) => {
     })
     .catch(err => next({
       log: 'An error occured writing to the database',
+      message: { err: `${err}`},
+    }))
+}
+
+// method for removing an item from the db
+cartController.deleteCard = (req, res, next) => {
+  const {ingredient} = req.body;
+  console.log('PING!!', ingredient)
+  fs.readFile(path.resolve(__dirname, '../db/barList.json'))
+    .then(data => JSON.parse(data))
+    .then(data => {
+      if(data[ingredient] === undefined) {
+        return next({
+          log: 'No item with the passed in name exists in the db'
+        })
+      }
+      delete data[ingredient]
+      res.locals.newCart = data;
+      fs.writeFile(path.resolve(__dirname, '../db/barList.json'),
+      JSON.stringify(data), 'UTF-8')
+        .then(() => next())
+    })
+    .catch(err => next({
+      log: 'An error occured deleting an item from the database',
       message: { err: `${err}`},
     }))
 }

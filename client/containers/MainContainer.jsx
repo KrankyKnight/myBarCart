@@ -29,7 +29,7 @@ const MainContainer = () => {
   return(
     <div className='mainContainer'>
       <OptionsContainer dispatch={dispatch} curState = {curState}/>
-      <BarContainer cart={cart}/>
+      <BarContainer cart={cart} dispatch={dispatch}/>
       <CurrentViewContainer currentMode={currentMode} allIngredients={allIngredients} dispatch={dispatch}/>
     </div>
   )

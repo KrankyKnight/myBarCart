@@ -19,10 +19,23 @@
 
 .bar {
   grid-area: b;
+  display: flex;
+  justify-content: center;
   min-width: 20vw;
   max-width: 25vw;
   height: 85vh;
   border: 1px solid black;
+  overflow-y: scroll;
+}
+
+.barCard {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  width: 18vw;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 //base style for view port
