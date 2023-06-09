@@ -12,7 +12,7 @@ const CurrentViewContainer = ({currentMode, allIngredients, dispatch, recipes}) 
   if( currentMode === 'none') {
     return(
       <div className='view'>
-        Welcome to myBarCart
+        <span className='blurb'>Welcome to myBarCart <br/><br/> This app brought to use through the loving abuse of the <em>thecocktailDB</em> API's free content</span>
     </div>
     )
   } 
@@ -36,8 +36,8 @@ const CurrentViewContainer = ({currentMode, allIngredients, dispatch, recipes}) 
     //display while waiting for results
     if(recipes === 'pending') {
       return(
-        <div className={`view ${currentMode}`}>
-          Fetching your recipes. Please be patient, API's are expensive and I am cheap. Pinging one... alot.
+        <div className={`view ${currentMode} pending`}>
+          <span className='blurb'>Fetching your recipes. Please be patient, API's are expensive and I am cheap. Pinging one... alot.</span>
         </div>
       )
     } 
@@ -45,7 +45,7 @@ const CurrentViewContainer = ({currentMode, allIngredients, dispatch, recipes}) 
     else if (recipes.length === 0) {
       return(
         <div className={`view ${currentMode}`}>
-          Sadly there are no recipes in the database that fully contain your cart. Time to go shopping... or do shots. No judgement.
+          <span className='blurb'>Sadly there are no recipes in the database that fully contain your cart. Time to go shopping... or do shots. No judgement.</span>
         </div>
       )
     } 
@@ -71,7 +71,7 @@ const CurrentViewContainer = ({currentMode, allIngredients, dispatch, recipes}) 
     else {
       return(
         <div className='view'>
-          Something is not right... good luck code man!
+          <span className='blurb'>Something is not right... good luck code man!</span>
        </div>
       )
     }
@@ -79,7 +79,7 @@ const CurrentViewContainer = ({currentMode, allIngredients, dispatch, recipes}) 
   }
   return (
     <div className='view'>
-       This should not be displaying. Shhh... don't tell anyone...
+       <span className='blurb'>This should not be displaying. Shhh... don't tell anyone...</span>
      </div>
    ) 
 }

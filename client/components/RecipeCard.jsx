@@ -14,13 +14,14 @@ const RecipeCard = ({ name, content, glass, instructions, image, ingredients }) 
   }
 
   return(
-    <div>
-      <img src={image} alt={`An image of the drink ${name}`}></img>
+    <div className='recipeCard'>
+      <img src={image} alt={`An image of the drink ${name}`} className='recipeImg'></img>
       <h3>{name}</h3>
-      <p>{content}</p>
-      <p>Served in a {glass}</p>
-      <p>Instructions: {instructions}</p>
-      {listOfIngredients}
+      <p className='content'>{content}</p>
+      <p className='glass'>Served in a {glass}</p>
+      <p className='instructions'><em>Instructions:</em>{instructions}</p>
+      <div className='ingredientLabel'>Ingredients</div>
+      <div className='ingredientsList'>{listOfIngredients}</div>
     </div>
   )
 }

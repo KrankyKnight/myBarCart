@@ -14,6 +14,11 @@ router.get('/initialCart', cartController.initialCart, (req, res) => {
   return res.status(200).json(res.locals.newCart);
 })
 
+router.post('/lookup', cartController.lookupIngredient, (req, res) => {
+  console.log(req.body);
+  return res.status(200).json(res.locals.newCart);
+})
+
 //route to middleware to populate view with all available ingredients
 router.get('/', apiController.getAllIngredients, (req, res) => {
   console.log('in ingredients router');

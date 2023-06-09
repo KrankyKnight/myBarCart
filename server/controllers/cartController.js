@@ -18,9 +18,46 @@ cartController.initialCart = (req, res, next) => {
     }))
 }
 
+cartController.lookupIngredient = async (req, res, next) => {
+  const {ingredient} = req.body;
+  const newIngredient = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredient}`)
+    .then(data => data.json())
+    .then(data => data.ingredients[0].strIngredient)
+    .catch(err => next({
+      log: 'entry not a valid ingredient',
+      message: { err: `${err}`}
+    }))
+  const db = await fs.readFile(path.resolve(__dirname, '../db/barList.json'))
+    .then(data => JSON.parse(data))
+    .catch(err => next({
+      log: 'entry retreiving database',
+      message: { err: `${err}`}
+    }))
+  if (!db[newIngredient]) {
+    const extendedIngredient = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${newIngredient}`)
+      .then(data => data.json())
+      .then(data => {
+        console.log('ids successfully retreived');
+        const idArray = []; //create array to hold recipe ids
+        for (const obj of data.drinks) { //iterate over data array at key drinks
+          idArray.push(obj.idDrink) //push id into id array
+        }
+        db[ingredient] = idArray; //set new ingredient entry in db to ingredient with value ids
+        res.locals.newCart = db;
+        fs.writeFile(path.resolve(__dirname, '../db/barList.json'),
+        JSON.stringify(db), 'UTF-8')
+          .then(() => next())
+      }) 
+  }else {
+    //if not return old cart
+    res.locals.newCart = 'no change';
+    return next()
+  }
+};
+
 //method for adding an ingredient to the db
 cartController.addToCart = (req, res, next) => {
-  console.log('in cart controller');
+  // console.log('in cart controller');
   const {ingredient} = req.body; //sanitize data
   //get database
   fs.readFile(path.resolve(__dirname, '../db/barList.json'))

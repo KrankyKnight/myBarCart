@@ -6,8 +6,8 @@ import BarCard from '../components/BarCard.jsx';
 const ContentContainer = ({cart, dispatch}) => {
   if(cart === undefined) {
     return(
-      <div className='bar'>
-        Loading Cart
+      <div className='bar loading'>
+        Loading Cart...
       </div>
     )
   }

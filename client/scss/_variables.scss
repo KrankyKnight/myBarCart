@@ -1,0 +1,12 @@
+$base: #2637BD;
+$base-lighter: lighten($base, 20%);
+$bar: #BD5D39;
+$bar-lighter: lighten($bar, 20%);
+$options: #4D4D4D;
+$options-lighter: lighten($options, 20%);
+$button: #3C6E99;
+$button-hover: darken($button, 20%);
+$button-lighter: lighten($button, 20%);
+$ingredientBttn: #47B56A;
+$ingredientBttn-hover: darken($ingredientBttn, 20%);
+$smoke-border: darken(rgb(245, 245, 245), 20%);
