@@ -42,7 +42,7 @@ cartController.lookupIngredient = async (req, res, next) => {
         for (const obj of data.drinks) { //iterate over data array at key drinks
           idArray.push(obj.idDrink) //push id into id array
         }
-        db[ingredient] = idArray; //set new ingredient entry in db to ingredient with value ids
+        db[newIngredient.toUpperCase()] = idArray; //set new ingredient entry in db to ingredient with value ids
         res.locals.newCart = db;
         fs.writeFile(path.resolve(__dirname, '../db/barList.json'),
         JSON.stringify(db), 'UTF-8')
@@ -74,7 +74,7 @@ cartController.addToCart = (req, res, next) => {
             for (const obj of data.drinks) { //iterate over data array at key drinks
               idArray.push(obj.idDrink) //push id into id array
             }
-            db[ingredient] = idArray; //set new ingredient entry in db to ingredient with value ids
+            db[ingredient.toUpperCase()] = idArray; //set new ingredient entry in db to ingredient with value ids
             res.locals.newCart = db;
             fs.writeFile(path.resolve(__dirname, '../db/barList.json'),
             JSON.stringify(db), 'UTF-8')

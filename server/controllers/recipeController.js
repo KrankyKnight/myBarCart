@@ -9,11 +9,12 @@ const ingredientCheck = (fullRecipe, cart) => {
   const ingredientArray = [] //create return array of ingredients to reference for next helper 
   for(let i = 1; i <= 15; i++) { //iterate through ingredient list of recipe
     let ingredientKey = `strIngredient${i}`;
+    console.log('here', recipe[ingredientKey], cart[recipe[ingredientKey]])
     let measureKey = `strMeasure${i}`; 
     if(recipe[ingredientKey] === null) { //if null all ingredients checked -> passed
       return [true, ingredientArray];
     }
-    if(!cart[recipe[ingredientKey]]) { //if ingredient is undefined -> failed
+    if(cart[recipe[ingredientKey].toUpperCase()] === undefined) { //if ingredient is undefined -> failed
       return [false, []];
     }
     if(recipe[measureKey]) { //check for measurements
@@ -66,7 +67,7 @@ recipeController.getRecipes = async (req, res, next) => {
     console.log('fetching recipe');
     const fullRecipe = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
       .then(data => data.json())
-    console.log('recipe retreived: ', fullRecipe);
+    // console.log('recipe retreived: ', fullRecipe);
     const testResult = ingredientCheck(fullRecipe, db)
     console.log('test in for loop', testResult)
     let newRecipe;
