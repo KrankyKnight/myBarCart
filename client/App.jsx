@@ -1,10 +1,10 @@
 import React from 'react';
-import MainContainer from './containers/MainContainer.jsx';
+import MainDisplay from './containers/MainDisplay';
 
 const App = () => {
   return(
     <div>
-      <MainContainer/>
+      <MainDisplay key='MainDisplay'/>
     </div>
   );
 };

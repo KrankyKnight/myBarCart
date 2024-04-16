@@ -1,16 +1,18 @@
-// @description: The HUD for functionality of app
+/**
+ * @description API search options
+ */
 
 import React from 'react';
-import { getIngredients } from '../actions/actions';
-import { getRecipes } from '../actions/actions';
-import { pendingRecipes } from '../actions/actions';
-import {updateCart} from '../actions/actions.js'
+import { getIngredients, getRecipes, pendingRecipes, updateCart } from '../../actions/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 
-
-const Options = ({dispatch, curState}) => {
-
-  const getIngList = (event) => {
+const Options = () => {
+  
+  const dispatch = useDispatch();
+  const recipes = useSelector((state) => state.bar.recipes);
+  
+  const getIngredientList = (event) => {
     event.preventDefault();
     fetch('http://localhost:3000/ingredients')
       .then(data => data.json())
@@ -18,15 +20,10 @@ const Options = ({dispatch, curState}) => {
       .catch(err => console.log(`Error: ${err}`))
   };
 
-  const checkState = (event) => {
-    event.preventDefault();
-    console.log(curState);
-  }
-
-  const pendRecipes = (event) => {
+  const dispatchPendingRecipes = (event) => {
     event.preventDefault();
     dispatch(pendingRecipes());
-  }
+  };
 
   const fetchRecipes = () => {
     console.log('getting recipes');
@@ -39,15 +36,12 @@ const Options = ({dispatch, curState}) => {
       .catch(err => console.log(`Error: ${err}`))
   }
 
-  //check if pending recipes
-  if(curState.recipes === 'pending') {
-    fetchRecipes();
-  }
+  if(recipes === 'pending') fetchRecipes();
 
   const searchIngredient = (event) => {
     event.preventDefault();
     const target = document.getElementById('lookupText');
-    fetch('http://localhost:3000/ingredients/lookup', { //post ingredient to db
+    fetch('http://localhost:3000/ingredients/lookup', {
       method: 'post',
       headers: {
         "content-type": "application/json"
@@ -60,9 +54,9 @@ const Options = ({dispatch, curState}) => {
   }
 
   return(
-    <div className='options'>
-      <button onClick={pendRecipes}>Generate Recipes</button>
-      <button onClick={getIngList}>Get Ingredients</button>
+    <div className='Options'>
+      <button onClick={dispatchPendingRecipes}>Generate Recipes</button>
+      <button onClick={getIngredientList}>Get Ingredients</button>
       <div className='lookup'>
         <input name='ingredient' type='text' placeholder='look up an ingredient' className='field' id='lookupText'></input>
         <button className='button' onClick={searchIngredient}>Lookup</button>
@@ -72,5 +66,3 @@ const Options = ({dispatch, curState}) => {
 }
 
 export default Options;
-
-//optional button for testing <button onClick={checkState}>Check State</button>

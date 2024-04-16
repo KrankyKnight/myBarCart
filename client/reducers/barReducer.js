@@ -46,13 +46,11 @@ const barReducer = createReducer(initialState, (builder) => {
     })
 
     .addCase(actions.pendingRecipes, (state, action) => {
-      console.log('calling pending recipes action');
       state.viewMode = 'recipes';
       state.recipes = 'pending';
     })
 
     .addCase(actions.getRecipes, (state, action) => {
-      console.log('calling get recipes action with ', action.payload)
       if(action.payload === 'no results') {
         state.recipes = [];
       } else {
