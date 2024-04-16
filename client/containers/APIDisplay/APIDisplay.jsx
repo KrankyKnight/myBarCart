@@ -27,7 +27,6 @@ const APIDisplay = () => {
   let recipeCount = 0;
   if(currentMode === 'recipes' && recipes.length){
     for(let recipe of recipes) {
-      console.log(recipe);
       const { id, name, content, glass, instructions, image, ingredients } = recipe;
       recipeCount++;
       recipeCards.push(<RecipeCard key={`recipe${recipeCount}`} id={id} name={name} content={content} glass={glass} instructions={instructions} image={image} ingredients={ingredients}/>)

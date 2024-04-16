@@ -5,7 +5,7 @@ const cartController = {};
 
 //method for initializing cart on load gtom the db
 cartController.initialCart = (req, res, next) => {
-  // console.log('in initial cart');
+
   fs.readFile(path.resolve(__dirname, '../db/barList.json'))
     .then(data => JSON.parse(data))
     .then(data => {
@@ -37,7 +37,6 @@ cartController.lookupIngredient = async (req, res, next) => {
     const extendedIngredient = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${newIngredient}`)
       .then(data => data.json())
       .then(data => {
-        console.log('ids successfully retreived');
         const idArray = []; //create array to hold recipe ids
         for (const obj of data.drinks) { //iterate over data array at key drinks
           idArray.push(obj.idDrink) //push id into id array
@@ -57,7 +56,6 @@ cartController.lookupIngredient = async (req, res, next) => {
 
 //method for adding an ingredient to the db
 cartController.addToCart = (req, res, next) => {
-  // console.log('in cart controller');
   const {ingredient} = req.body; //sanitize data
   //get database
   fs.readFile(path.resolve(__dirname, '../db/barList.json'))
@@ -65,11 +63,9 @@ cartController.addToCart = (req, res, next) => {
     .then(db => {
       //check if entry exists
       if(db[ingredient] === undefined) { //if database does not contain ingredient
-        console.log('ingredient not in database... fetching')
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
           .then(data => data.json())
           .then(data => {
-            console.log('ids successfully retreived');
             const idArray = []; //create array to hold recipe ids
             for (const obj of data.drinks) { //iterate over data array at key drinks
               idArray.push(obj.idDrink) //push id into id array
@@ -95,7 +91,6 @@ cartController.addToCart = (req, res, next) => {
 // method for removing an item from the db
 cartController.deleteCard = (req, res, next) => {
   const {ingredient} = req.body;
-  console.log('PING!!', ingredient)
   fs.readFile(path.resolve(__dirname, '../db/barList.json'))
     .then(data => JSON.parse(data))
     .then(data => {

@@ -26,10 +26,8 @@ const Options = () => {
   };
 
   const fetchRecipes = () => {
-    console.log('getting recipes');
     fetch('http://localhost:3000/ingredients/getRecipes')
       .then(data => {
-        console.log('back with recipes');
         return data.json();
       })
       .then(data => dispatch(getRecipes(data)))

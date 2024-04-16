@@ -9,7 +9,6 @@ const RecipeCard = ({ name, content, glass, instructions, image, ingredients }) 
   
   const listOfIngredients = [];
   let count = 0;
-  // console.log('ingredients', ingredients)
   for (let ingredient of ingredients) {
     count++;
     listOfIngredients.push(<Ingredient key={`ingredient${name}${count}`} ingredient={ingredient}/>)

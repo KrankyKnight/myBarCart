@@ -18,18 +18,16 @@ const barReducer = createReducer(initialState, (builder) => {
       state.cart = initialCart.sort();
     })
 
-    .addCase(actions.getIngredients, (state, action) => { //import the full ingredient list from the api
-      // console.log('getIngresiants payload', action.payload);
+    .addCase(actions.getIngredients, (state, action) => {
       let newIngredients = [];
       for (const drink of action.payload.drinks) {
         newIngredients.push(drink.strIngredient1);
       }
-      state.viewMode = 'ingredients' //shift the view panel to display ingredients
+      state.viewMode = 'ingredients'
       state.ingredientSearch = newIngredients.sort();
     })
 
     .addCase(actions.updateCart, (state, action) => {
-      // console.log('update cart payload', action.payload)
       const newCart = []
       for (const ingredient in action.payload) {
         newCart.push(ingredient);

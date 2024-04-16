@@ -10,22 +10,21 @@ const IngredientLookupCard = ({name}) => {
 
   const dispatch = useDispatch();
 
-  //when clicked add selection to database to persist through application runs
   const addToCart = (event) => {
     event.preventDefault();
-    fetch('http://localhost:3000/ingredients', { //post ingredient to db
+    fetch('http://localhost:3000/ingredients', {
       method: 'post',
       headers: {
         "content-type": "application/json"
       },
       body: JSON.stringify({ ingredient: event.target.innerText}),
     })
-      .then(data => data.json()) //convert returned database
+      .then(data => data.json())
       .then(data => {
         if(data === 'no change') {
-          console.log('no change made') //if state does not need to change
+          console.log('no change made');
         } else {
-          dispatch(updateCart(data)); //update state
+          dispatch(updateCart(data));
         }
       })
       .catch(err => console.log(`Error: ${err}`));

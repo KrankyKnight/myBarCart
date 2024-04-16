@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 3000;
 
 //require routers as developed
 const ingredientsRouter = require('./routes/ingredients.js')
-console.log('in router')
 
 //handle parsing body request
 app.use(express.json())
@@ -30,17 +29,16 @@ app.use('/ingredients', ingredientsRouter)
 
 /* ERRORS */
 //catch-all error handler for unknown requests
-app.use((req, res) => res.status(404))
+app.use('*', (req, res) => res.status(404))
 
 //global error handler
-const globalError = app.use((err, req, res) => {
+app.use((err, req, res) => {
   const defaultError = {
     log: 'Express error handler caught unknown middleware error',
     status: 400,
     message: { err: 'An error occured'},
   };
   const errorObject = Object.assign(defaultError, err);
-  console.log('Error: ', errorObject.log);
   return res.status(errorObject.status || 500).json(errorObject.message);
 })
 
