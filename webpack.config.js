@@ -8,7 +8,7 @@ module.exports = {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'build'),
     },
-    plugins: [new HtmlWebpackPlugin({ template: 'index.html' })],
+    plugins: [new HtmlWebpackPlugin({ template: 'index.html' }), "@babel/syntax-dynamic-import"],
     devServer: {
       static: {
         directory: path.join(__dirname, 'build'),
@@ -30,7 +30,7 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: [
-                ['@babel/preset-env', { targets: "defaults"}], 
+                ['@babel/preset-env', { targets: "defaults", "modules": false }], 
                 ['@babel/preset-react', { targets: "defaults"}]
               ]
             }
