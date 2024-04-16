@@ -3,9 +3,12 @@
  */
 
 import React from 'react';
-import {updateCart} from '../../actions/actions.js'
+import { useDispatch } from 'react-redux';
+import { updateCart } from '../../actions/actions.js';
 
-const IngredientLookupCard = ({name, dispatch}) => {
+const IngredientLookupCard = ({name}) => {
+
+  const dispatch = useDispatch();
 
   //when clicked add selection to database to persist through application runs
   const addToCart = (event) => {

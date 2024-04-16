@@ -1,1 +1,1 @@
-export { default } from './APIDisplay/jsx';
+export { default } from './APIDisplay.jsx';

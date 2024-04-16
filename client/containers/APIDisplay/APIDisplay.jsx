@@ -3,14 +3,13 @@
  */
 
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import RecipeCard from '../../components/RecipeCard/RecipeCard.jsx';
-import IngredientCard from '../../components/IngredientLookupCard/IngredientCard.jsx';
+import { useSelector } from 'react-redux';
+import RecipeCard from '../../components/RecipeCard';
+import IngredientLookupCard from '../../components/IngredientLookupCard';
 
 //display must be rendered based on a state
 const APIDisplay = () => {
 
-  const dispatch = useDispatch();
   const allIngredients = useSelector((state) => state.bar.ingredientSearch);
   const currentMode = useSelector((state) => state.bar.viewMode);
   const recipes = useSelector((state) => state.bar.recipes);
@@ -20,7 +19,7 @@ const APIDisplay = () => {
   if(currentMode === 'ingredients'){
     for(const ingredient of allIngredients) {
       ingredientCount++;
-      viewOutput.push(<IngredientCard key={`ingredient${ingredientCount}`} name={ingredient} dispatch={dispatch}/>)
+      viewOutput.push(<IngredientLookupCard key={`ingredient${ingredientCount}`} name={ingredient}/>)
     };
   };
 

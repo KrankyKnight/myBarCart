@@ -4,9 +4,9 @@
 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Inventory from '../Inventory/index.js'
-import OptionsContainer from '../Options/index.js';
-import APIDisplay from '../APIDisplay/index.js';
+import Inventory from '../Inventory'
+import OptionsContainer from '../Options';
+import APIDisplay from '../APIDisplay';
 import { initializeCart } from '../../actions/actions.js';
 
 const MainDisplay = () => {
