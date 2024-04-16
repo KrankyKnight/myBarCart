@@ -1,9 +1,11 @@
-// @description: A list of all items currently useable for recipe searches
+/**
+ * @description inventory cards
+ */
 
 import React from 'react';
-import { deleteCard } from '../actions/actions';
+import { deleteCard } from '../../actions/actions';
 
-const BarCard = ({name, dispatch}) => {
+const InventoryItem = ({name, dispatch}) => {
 
   const deleteCardOnPress = (event) => {
     event.preventDefault();
@@ -28,4 +30,4 @@ const BarCard = ({name, dispatch}) => {
   )
 }
 
-export default BarCard;
+export default InventoryItem;

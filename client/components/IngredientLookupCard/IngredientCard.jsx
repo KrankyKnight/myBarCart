@@ -1,9 +1,11 @@
-// @description: Cards for ingredient selection
+/**
+ * @description ingredient tag made from lookup
+ */
 
 import React from 'react';
-import {updateCart} from '../actions/actions.js'
+import {updateCart} from '../../actions/actions.js'
 
-const IngredientCard = ({name, dispatch}) => {
+const IngredientLookupCard = ({name, dispatch}) => {
 
   //when clicked add selection to database to persist through application runs
   const addToCart = (event) => {
@@ -33,4 +35,4 @@ const IngredientCard = ({name, dispatch}) => {
   )
 }
 
-export default IngredientCard;
+export default IngredientLookupCard;

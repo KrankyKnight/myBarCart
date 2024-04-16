@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { useSelector  } from 'react-redux';
-import RecipeCard from '../components/RecipeCard.jsx';
-import IngredientCard from '../components/IngredientCard.jsx';
+import RecipeCard from '../components/RecipeCard/RecipeCard.jsx';
+import IngredientCard from '../components/IngredientLookupCard/IngredientCard.jsx';
 
 //display must be rendered based on a state
 const CurrentViewContainer = ({currentMode, allIngredients, dispatch, recipes}) => {

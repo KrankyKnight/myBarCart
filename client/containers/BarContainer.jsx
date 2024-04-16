@@ -1,7 +1,7 @@
 // @description: The main view window that displays ingredients or recipes and displays the pantry list
 
 import React from 'react';
-import BarCard from '../components/BarCard.jsx';
+import BarCard from '../components/InventoryItem/InventoryItem.jsx';
 
 const ContentContainer = ({cart, dispatch}) => {
   if(cart === undefined) {

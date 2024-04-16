@@ -1,7 +1,9 @@
-// @description: Cards generated from a recipe lookup
+/**
+ * @description Recipe cards
+ */
 
 import React from 'react';
-import Ingredient from './Ingredient.jsx';
+import Ingredient from '../Ingredient/Ingredient.jsx';
 
 const RecipeCard = ({ name, content, glass, instructions, image, ingredients }) => {
   

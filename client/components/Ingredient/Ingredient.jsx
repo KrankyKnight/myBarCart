@@ -1,5 +1,3 @@
-// @description: individual ingredients in a recipe card
-
 import React from 'react';
 
 const Ingredient = ({ingredient}) => {
