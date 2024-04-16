@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "description": "My recipe project",
-  "name": "my-pantry",
+  "description": "Get recipes that you can make RIGHT NOW, no store trips",
+  "name": "my-bar-cart",
   "devDependencies": {
     "@babel/core": "^7.22.1",
     "@babel/preset-env": "^7.22.4",
