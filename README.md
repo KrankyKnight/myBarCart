@@ -11,3 +11,4 @@ This app is being made to create a utility for those of use who would not like t
 5. Implement seperate database for storing recipes
 6. Change query system to improve retreival time of recipes
 7. Create styling (remove current eye bleach)
+8. Convert components to Typescript
