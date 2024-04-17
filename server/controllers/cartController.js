@@ -34,7 +34,7 @@ cartController.lookupIngredient = async (req, res, next) => {
       message: { err: `${err}`}
     }))
   if (!db[newIngredient]) {
-    const extendedIngredient = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${newIngredient}`)
+    await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${newIngredient}`)
       .then(data => data.json())
       .then(data => {
         const idArray = []; //create array to hold recipe ids

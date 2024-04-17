@@ -4,6 +4,7 @@
 
 import React from 'react';
 import Ingredient from '../Ingredient/Ingredient.jsx';
+import './styles.scss';
 
 const RecipeCard = ({ name, content, glass, instructions, image, ingredients }) => {
   
@@ -20,9 +21,14 @@ const RecipeCard = ({ name, content, glass, instructions, image, ingredients }) 
       <h3>{name}</h3>
       <p className='content'>{content}</p>
       <p className='glass'>Served in a {glass}</p>
-      <p className='instructions'><em>Instructions:</em>{instructions}</p>
-      <div className='ingredientLabel'>Ingredients</div>
-      <div className='ingredientsList'>{listOfIngredients}</div>
+      <ul>
+        <h4 className='ingredientLabel'>Instructions</h4>
+        <li className='ingredientsList'>{instructions}</li>
+      </ul>
+      <ul>
+        <h4 className='ingredientLabel'>Ingredients</h4>
+        <li className='ingredientsList'>{listOfIngredients}</li>
+      </ul>
     </div>
   )
 }

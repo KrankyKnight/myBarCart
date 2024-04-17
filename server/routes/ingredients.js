@@ -24,12 +24,12 @@ router.get('/', apiController.getAllIngredients, (req, res) => {
 })
 
 //route to middleware to add items to bar cart
-router.post('/', cartController.addToCart, (req, res) => {
+router.post('/', cartController.addToCart, recipeController.resetCache, (req, res) => {
   res.status(200).json(res.locals.newCart);
 })
 
 //route to middleware to remove ingredient from bar cart
-router.delete('/', cartController.deleteCard, (req, res) => {
+router.delete('/', cartController.deleteCard, recipeController.resetCache, (req, res) => {
   return res.status(200).json(res.locals.newCart);
 })
 

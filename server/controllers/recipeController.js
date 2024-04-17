@@ -39,8 +39,16 @@ const cleanupRecipe = (fullrecipe, checkResult) => {
 }
 
 recipeController.getRecipes = async (req, res, next) => {
+  const cache = await fs.readFile(path.resolve(__dirname, '../db/recipeList.json'))
+    .then(data => JSON.parse(data));
+
+  if(cache["cached"]) {
+    res.locals.recipes = cache["recipes"];
+    return next();
+  }
+  
   const db = await fs.readFile(path.resolve(__dirname, '../db/barList.json'))
-    .then(data => JSON.parse(data))
+    .then(data => JSON.parse(data));
 
   const idSet = new Set();
 
@@ -53,6 +61,7 @@ recipeController.getRecipes = async (req, res, next) => {
   const successArray = []
 
   for(const id of idSet) {
+    console.log('fetching' + id);
     const fullRecipe = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
       .then(data => data.json())
     const testResult = ingredientCheck(fullRecipe, db)
@@ -63,9 +72,40 @@ recipeController.getRecipes = async (req, res, next) => {
     }
   }
 
-  if(successArray.length === 0) res.locals.recipes = 'no results';
-  else res.locals.recipes = successArray;
-  next();
-}
+  if(successArray.length === 0) {
+    res.locals.recipes = 'no results';
+    return next();
+  }
+  else {
+    try{
+      await fs.writeFile(path.resolve(__dirname, '../db/recipeList.json'),
+        JSON.stringify({"cached":true,"recipes":[...successArray]}), 
+        'UTF-8');
+      res.locals.recipes = successArray;
+      return next()
+    } catch(err) {
+      return next({
+        log: 'Error updating recipeList cache db',
+        status: 500,
+        message: { err: err },
+      });
+    };
+  };
+};
+
+recipeController.resetCache = async (req, res, next) => {
+  try{
+    await fs.writeFile(path.resolve(__dirname, '../db/recipeList.json'),
+      JSON.stringify({"cached":false,"recipes":[]}), 
+      'UTF-8');
+    return next();
+  } catch(err) {
+    return next({
+      log: 'Error updating recipeList cache db',
+      status: 500,
+      message: { err: err },
+    });
+  };
+};
 
 module.exports = recipeController;
