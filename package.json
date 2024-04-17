@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server/server.js",
     "build": "webpack",
-    "dev": "webpack-dev-server --open --hot --mode development"
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --hot --progress --color\" \"nodemon ./server/server.js\""
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -27,6 +27,8 @@
     "@babel/preset-react": "^7.22.3",
     "@webpack-cli/generators": "^3.0.6",
     "babel-loader": "^9.1.2",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.1",
     "mini-css-extract-plugin": "^2.7.6",

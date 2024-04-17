@@ -56,10 +56,8 @@ const Options = () => {
     <div id='Options' className='input'>
       <button onClick={dispatchPendingRecipes}>Generate Recipes</button>
       <button onClick={getIngredientList}>Get Ingredients</button>
-      <div className='lookup'>
-        <input name='ingredient' type='text' placeholder='look up an ingredient' className='field' id='lookupText'></input>
-        <button className='button' onClick={searchIngredient}>Lookup</button>
-      </div>
+      <input name='ingredient' type='text' placeholder='search ingredient' className='field' id='lookupText'></input>
+      <button className='button' onClick={searchIngredient}>Lookup</button>
     </div>
   )
 }

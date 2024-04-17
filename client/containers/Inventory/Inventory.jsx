@@ -26,8 +26,8 @@ const Inventory = () => {
     <div id='Inventory' className='inventory'>
       <ul>
         {cart ? newCart:  
-          <div className='bar loading'>
-            Loading Cart...
+          <div className='barInventory'>
+            Inventory Empty
           </div>}
       </ul>
     </div>

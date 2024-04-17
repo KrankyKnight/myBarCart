@@ -2,4 +2,28 @@
 
 .input {
   grid-area: input;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $darkBackground;
+  border-radius: 12px;
+  margin: 10px;
+  box-shadow: $darkBackgroundShadow 5px 5px 5px;
+  button {
+    height: 60px;
+    font-size: 30px;
+    padding: 5px 15px;
+    margin: auto 20px;
+    border-radius: 12px;
+  }
+  input {
+    height: 60px;
+    font-size: 30px;
+    padding: 0 15px;
+    margin: auto 20px;
+    border-radius: 12px;
+  }
+  ::placeholder {
+    text-align: center;
+  }
 }
