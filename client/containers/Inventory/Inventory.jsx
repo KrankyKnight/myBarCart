@@ -5,6 +5,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InventoryItem from '../../components/InventoryItem';
+import './styles.scss';
 
 const Inventory = () => {
 
@@ -22,7 +23,7 @@ const Inventory = () => {
   };
 
   return(
-    <div className='bar'>
+    <div id='Inventory' className='inventory'>
       <ul>
         {cart ? newCart:  
           <div className='bar loading'>

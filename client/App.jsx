@@ -1,9 +1,10 @@
 import React from 'react';
 import MainDisplay from './containers/MainDisplay';
+import './scss/styles.scss'
 
 const App = () => {
   return(
-    <div>
+    <div id='App'>
       <MainDisplay key='MainDisplay'/>
     </div>
   );

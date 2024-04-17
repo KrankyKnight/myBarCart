@@ -5,9 +5,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Inventory from '../Inventory'
-import OptionsContainer from '../Options';
+import Options from '../Options';
 import APIDisplay from '../APIDisplay';
 import { initializeCart } from '../../actions/actions.js';
+import './styles.scss';
 
 const MainDisplay = () => {
 
@@ -21,15 +22,15 @@ const MainDisplay = () => {
         dispatch(initializeCart(data))
       })
       .catch(err => console.log(`Error intitializing cart: ${err}`))
-  }
+  };
 
   return(
-    <div className='MainDisplay'>
-      <OptionsContainer key='OptionsContainer'/>
+    <div id='MainDisplay' className='displayGrid'>
+      <Options key='Options'/>
       <Inventory key='Inventory'/>
       <APIDisplay key='APIDisplay'/>
     </div>
-  )
-}
+  );
+};
 
 export default MainDisplay;

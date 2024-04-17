@@ -6,6 +6,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import RecipeCard from '../../components/RecipeCard';
 import IngredientLookupCard from '../../components/IngredientLookupCard';
+import './styles.scss';
 
 //display must be rendered based on a state
 const APIDisplay = () => {
@@ -34,7 +35,7 @@ const APIDisplay = () => {
   };
 
   return(
-    <div id='APIDisplay'>
+    <div id='APIDisplay' className='api'>
       {currentMode === 'none' ? 
         <span className='blurb'>Welcome to myBarCart <br/><br/> This app brought to use through the loving abuse of the <em>thecocktailDB</em> API's free content</span>
       : currentMode === 'ingredients' ? 

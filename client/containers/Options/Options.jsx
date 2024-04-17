@@ -5,6 +5,7 @@
 import React from 'react';
 import { getIngredients, getRecipes, pendingRecipes, updateCart } from '../../actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import './styles.scss';
 
 
 const Options = () => {
@@ -52,7 +53,7 @@ const Options = () => {
   }
 
   return(
-    <div className='Options'>
+    <div id='Options' className='input'>
       <button onClick={dispatchPendingRecipes}>Generate Recipes</button>
       <button onClick={getIngredientList}>Get Ingredients</button>
       <div className='lookup'>
