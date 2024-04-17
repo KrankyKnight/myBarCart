@@ -39,7 +39,9 @@ const APIDisplay = () => {
       {currentMode === 'none' ? 
         <span className='blurb'>Welcome to myBarCart <br/><br/> This app brought to use through the loving abuse of the <em>thecocktailDB</em> API's free content</span>
       : currentMode === 'ingredients' ? 
-        viewOutput
+        <ul id='ingredientList'>
+          {viewOutput}
+        </ul>
       :currentMode === 'recipes' && recipes === 'pending' ? 
         <span className='blurb'>Fetching your recipes. Please be patient, API's are expensive and I am cheap. Pinging one... alot.</span>
       :currentMode === 'recipes' && !recipes.length ?

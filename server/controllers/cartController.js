@@ -19,7 +19,6 @@ cartController.initialCart = (req, res, next) => {
 }
 
 cartController.lookupIngredient = async (req, res, next) => {
-  console.log('here');
   const {ingredient} = req.body;
   const newIngredient = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredient}`)
     .then(data => data.json())

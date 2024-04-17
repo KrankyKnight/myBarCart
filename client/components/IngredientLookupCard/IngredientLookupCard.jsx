@@ -5,6 +5,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { updateCart } from '../../actions/actions.js';
+import './styles.scss';
 
 const IngredientLookupCard = ({name}) => {
 
