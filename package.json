@@ -3,9 +3,9 @@
   "description": "Get recipes that you can make RIGHT NOW, no store trips",
   "name": "my-bar-cart",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "NODE_ENV=production node server/server.js",
     "build": "webpack",
-    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --hot --progress --color\" \"nodemon ./server/server.js\""
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --hot --progress --color\" \"cross-env NODE_ENV=development nodemon ./server/server.js\""
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",

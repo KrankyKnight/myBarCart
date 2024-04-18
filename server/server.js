@@ -5,33 +5,28 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const NODE_ENV = process.env.NODE_ENV;
 
-//require routers as developed
 const ingredientsRouter = require('./routes/ingredients.js')
 
-//handle parsing body request
-app.use(express.json())
+app.use(express.json());
+app.use(express.urlencoded());
+if(NODE_ENV === 'development') {
+  app.use(cors({ origin: "http://localhost:8080" }));
+}
 
-//enable dev port for testing
-app.use(cors({
-  origin: "http://localhost:8080"
-}))
+/* STATIC */
 
-//serve static files from build
 app.use('/', express.static(path.join(__dirname, '../build')));
 
-//serve static files if build request fails
-app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
-})
+/* ROUTING */
 
 app.use('/ingredients', ingredientsRouter)
 
-/* ERRORS */
-//catch-all error handler for unknown requests
+/* ERROR HANDLING */
+
 app.use('*', (req, res) => res.status(404))
 
-//global error handler
 app.use((err, req, res) => {
   const defaultError = {
     log: 'Express error handler caught unknown middleware error',
