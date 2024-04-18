@@ -11,22 +11,32 @@ import './styles.scss';
 //display must be rendered based on a state
 const APIDisplay = () => {
 
-  const allIngredients = useSelector((state) => state.bar.ingredientSearch);
-  const currentMode = useSelector((state) => state.bar.viewMode);
+  const ingredientList = useSelector((state) => state.bar.ingredientList);
+  const filteredIngredientList = useSelector((state) => state.bar.filteredIngredientList);
+  const searchText = useSelector((state) => state.bar.searchText);
+  const viewMode = useSelector((state) => state.bar.viewMode);
   const recipes = useSelector((state) => state.bar.recipes);
 
   const viewOutput = [];
   let ingredientCount = 0;
-  if(currentMode === 'ingredients'){
-    for(const ingredient of allIngredients) {
-      ingredientCount++;
-      viewOutput.push(<IngredientLookupCard key={`ingredient${ingredientCount}`} name={ingredient}/>)
+  if(viewMode === 'ingredients'){
+    if(searchText.length === 0) {
+      for(const ingredient of ingredientList) {
+        ingredientCount++;
+        viewOutput.push(<IngredientLookupCard key={`ingredient${ingredientCount}`} name={ingredient}/>)
+      };
+    }
+    else {
+      for(const ingredient of filteredIngredientList) {
+        ingredientCount++;
+        viewOutput.push(<IngredientLookupCard key={`ingredient${ingredientCount}`} name={ingredient}/>)
+      };
     };
   };
 
   const recipeCards = [];
   let recipeCount = 0;
-  if(currentMode === 'recipes' && recipes.length){
+  if(viewMode === 'recipes' && recipes.length){
     for(let recipe of recipes) {
       const { id, name, content, glass, instructions, image, ingredients } = recipe;
       recipeCount++;
@@ -35,18 +45,23 @@ const APIDisplay = () => {
   };
 
   return(
-    <div id='APIDisplay' className='api'>
-      {currentMode === 'none' ? 
-        <span className='blurb'>Welcome to myBarCart <br/><br/> This app brought to use through the loving abuse of the <em>thecocktailDB</em> API's free content</span>
-      : currentMode === 'ingredients' ? 
+    <div id='APIDisplay' className={`api ${viewMode}`}>
+      {viewMode === 'none' ? 
+        <p className='blurb'>
+          <h4>Welcome to myBarCart</h4> 
+          <div>This app brought to you thanks to the wonderful devs at <em>thecocktailDB</em></div>
+          <div>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a></div>
+          <div>And support them on their patreon at <a href='https://www.patreon.com/thedatadb'>www.patreon.com/thedatadb</a></div>
+        </p>
+      : viewMode === 'ingredients' ? 
         <ul id='ingredientList'>
           {viewOutput}
         </ul>
-      :currentMode === 'recipes' && recipes === 'pending' ? 
+      :viewMode === 'recipes' && recipes === 'pending' ? 
         <span className='blurb'>Fetching your recipes. Please be patient, API's are expensive and I am cheap. Pinging one... alot.</span>
-      :currentMode === 'recipes' && !recipes.length ?
+      :viewMode === 'recipes' && !recipes.length ?
         <span className='blurb'>Sadly there are no recipes in the database that fully contain your cart. Time to go shopping... or do shots. No judgement.</span>
-      :currentMode === 'recipes' && recipes.length ? 
+      :viewMode === 'recipes' && recipes.length ? 
         recipeCards
       :
         <div>

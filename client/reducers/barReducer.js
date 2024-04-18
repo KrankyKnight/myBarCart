@@ -3,46 +3,39 @@ import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
   viewMode: 'none',
-  ingredientSearch: [],
+  ingredientList: [],
+  filteredIngredientList: [],
+  searchText: '',
   recipes: [],
-  cart: [],
+  cart: {length:0},
   ingredientToRecipeRef: {},
   totalIngredientsPerRecipeRef: {},
 }
 
 const barReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(actions.initializeCart, (state, action) => {
-      const initialCart = []
-      for (const ingredient in action.payload) {
-        initialCart.push(ingredient);
-      }
-      state.cart = initialCart.sort();
+
+    .addCase(actions.getIngredientList, (state, action) => {
+      state.ingredientList = action.payload;
     })
 
-    .addCase(actions.getIngredients, (state, action) => {
-      let newIngredients = [];
-      for (const drink of action.payload.drinks) {
-        newIngredients.push(drink.strIngredient1);
-      }
-      state.viewMode = 'ingredients'
-      state.ingredientSearch = newIngredients.sort();
+    .addCase(actions.setViewIngredientsList, (state, action) => {
+      state.viewMode = 'ingredients';
     })
 
-    .addCase(actions.updateCart, (state, action) => {
-      const newCart = []
-      for (const ingredient in action.payload) {
-        newCart.push(ingredient);
-      }
-      state.cart = newCart.sort();
+    .addCase(actions.updateSearchText, (state, action) => {
+      state.searchText = action.payload;
+      const minSearch = state.searchText.replace(/\s*/, "");
+      const regex = new RegExp(minSearch, 'i');
+      state.filteredIngredientList = state.ingredientList.filter(ingredient => regex.test(ingredient.toLowerCase().replace(/\s*/, "")))
     })
 
-    .addCase(actions.deleteCard, (state, action) => {
-      const newCart = []
-      for (const ingredient in action.payload) {
-        newCart.push(ingredient);
-      }
-      state.cart = newCart.sort();
+    .addCase(actions.removeItemFromCart, (state, action) => { //UPDATED
+      const entryToRemove = action.payload;
+      if(state.cart[entryToRemove] !== undefined) {
+        delete state.cart[entryToRemove];
+        state.cart.length--;
+      };
     })
 
     .addCase(actions.pendingRecipes, (state, action) => {
@@ -50,12 +43,22 @@ const barReducer = createReducer(initialState, (builder) => {
       state.recipes = 'pending';
     })
 
-    .addCase(actions.getRecipes, (state, action) => {
-      if(action.payload === 'no results') {
+    .addCase(actions.displayRecipes, (state, action) => {
+      if(!action.payload.length) {
         state.recipes = [];
       } else {
         state.recipes = action.payload;
       }
+    })
+
+    .addCase(actions.addItemToCart, (state, action) => { //UPDATED
+      const {ingredient, newIngredientEntry, totalIngredientsPerRecipeRef} = action.payload;
+      if(state.cart[ingredient] === undefined) {
+        state.cart[ingredient] = ingredient;
+        state.cart.length++;
+      };
+      state.ingredientToRecipeRef[ingredient] = newIngredientEntry[ingredient];
+      state.totalIngredientsPerRecipeRef = totalIngredientsPerRecipeRef;
     })
 
     .addDefaultCase((state) => state);

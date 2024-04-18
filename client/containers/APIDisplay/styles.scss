@@ -9,7 +9,26 @@
   border-radius: 12px;
   margin: 10px;
   box-shadow: $darkBackgroundShadow 5px 5px 5px;
+  overflow-y: scroll;
   #ingredientDisplay {
     display: flex;
+  }
+}
+
+.ingredients,
+.recipes {
+  align-items: baseline;
+}
+
+.none {
+  text-align: center;
+  font-size: 30px;
+  h4 {
+    font-weight: bold;
+    font-size: 34px;
+    padding: 10px;
+  }
+  div {
+    padding: 10px;
   }
 }

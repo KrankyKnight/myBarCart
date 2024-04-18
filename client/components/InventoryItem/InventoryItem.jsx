@@ -3,29 +3,23 @@
  */
 
 import React from 'react';
-import { deleteCard } from '../../actions/actions';
+import { removeItemFromCart } from '../../actions/actions';
+import { useDispatch } from 'react-redux';
 
-const InventoryItem = ({name, dispatch}) => {
+const InventoryItem = ({name}) => {
 
-  const deleteCardOnPress = (event) => {
+  const dispatch = useDispatch();
+
+  const removeItem = (event) => {
+    console.log('attempt')
     event.preventDefault();
-    const target = document.getElementById(`${name}`)
-    fetch('http://localhost:3000/ingredients', {
-      method: 'delete',
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify({ ingredient: target.innerHTML}),
-    })
-    .then(data => data.json())
-    .then(data => dispatch(deleteCard(data)))
-    .catch(err => console.log(`Error: ${err}`));
-  }
+    dispatch(removeItemFromCart(`${name}`));
+  };
 
   return(
     <li className='barCard'>
       <span id={name}>{name}</span>
-      <button onClick={deleteCardOnPress}>-</button>
+      <button onClick={removeItem}>-</button>
     </li>
   )
 }
