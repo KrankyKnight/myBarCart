@@ -6,6 +6,8 @@ const initialState = {
   ingredientSearch: [],
   recipes: [],
   cart: [],
+  ingredientToRecipeRef: {},
+  totalIngredientsPerRecipeRef: {},
 }
 
 const barReducer = createReducer(initialState, (builder) => {
