@@ -4,8 +4,8 @@ import { createReducer } from '@reduxjs/toolkit';
 const initialState = {
   viewMode: 'none',
   ingredientSearch: [],
-  recipes: undefined,
-  cart: undefined,
+  recipes: [],
+  cart: [],
 }
 
 const barReducer = createReducer(initialState, (builder) => {
@@ -60,20 +60,3 @@ const barReducer = createReducer(initialState, (builder) => {
 })
 
 export default barReducer;
-
-//fake recipe for testing
-// [
-//   {
-//     id: '13377',
-//     name: 'Sea breeze',
-//     content: 'Alcoholic',
-//     glass: 'Highball glass',
-//     instructions: 'Build all ingredients in a highball glass filled with ice. Garnish with lime wedge.',
-//     image: 'https://www.thecocktaildb.com/images/media/drink/7rfuks1504371562.jpg',
-//     ingredients: [
-//       'Vodka: 1 1/2 oz ',
-//       'Cranberry juice: 4 oz ',
-//       'Grapefruit juice: 1 oz '
-//     ]
-//   }
-// ]

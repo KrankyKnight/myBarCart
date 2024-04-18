@@ -2,27 +2,20 @@
  * @description main container for display
  */
 
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector} from 'react-redux';
 import Inventory from '../Inventory'
 import Options from '../Options';
 import APIDisplay from '../APIDisplay';
-import { initializeCart } from '../../actions/actions.js';
 import './styles.scss';
 
 const MainDisplay = () => {
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.bar.cart);
+  const state = useSelector((state) => state);
 
-  if(cart === undefined) {
-    fetch('http://localhost:3000/ingredients/initialCart')
-      .then(data => data.json())
-      .then(data => {
-        dispatch(initializeCart(data))
-      })
-      .catch(err => console.log(`Error intitializing cart: ${err}`))
-  };
+  useEffect(() => console.log('current state:', state.bar))
 
   return(
     <div id='MainDisplay' className='displayGrid'>

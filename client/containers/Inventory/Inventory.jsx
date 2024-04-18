@@ -5,6 +5,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InventoryItem from '../../components/InventoryItem';
+import { initializeCart } from '../../actions/actions.js';
 import './styles.scss';
 
 const Inventory = () => {
@@ -15,7 +16,16 @@ const Inventory = () => {
   const newCart = [];
   let count = 0;
 
-  if(cart) {
+  if(!cart.length) {
+    fetch('http://localhost:3000/ingredients/initialCart')
+      .then(data => data.json())
+      .then(data => {
+        dispatch(initializeCart(data))
+      })
+      .catch(err => console.log(`Error intitializing cart: ${err}`))
+  };
+
+  if(cart.length) {
     for(const ingredient of cart) {
       count++;
       newCart.push(<InventoryItem key={`cart${count}`} name={ingredient} dispatch={dispatch}/>)
@@ -25,7 +35,7 @@ const Inventory = () => {
   return(
     <div id='Inventory' className='inventory'>
       <ul>
-        {cart ? newCart:  
+        {cart.length ? newCart:  
           <div className='barInventory'>
             Inventory Empty
           </div>}
