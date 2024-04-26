@@ -37,7 +37,6 @@ const recipeController = {
         }))
     }
 
-    // id, name, content, glass, instructions, image, ingredients
     res.locals.recipeArray = newRecipeArray;
 
     return next()
