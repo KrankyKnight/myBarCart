@@ -32,7 +32,7 @@ const barReducer = createReducer(initialState, (builder) => {
       state.searchText = action.payload;
       const minSearch = state.searchText.replace(/\s*/, "");
       const regex = new RegExp(minSearch, 'i');
-      state.filteredIngredientList = state.ingredientList.filter(ingredient => regex.test(ingredient.toLowerCase().replace(/\s*/, "")))
+      state.filteredIngredientList = state.ingredientList.filter(ingredient => regex.test(ingredient.lookupName))
     })
 
     .addCase(actions.removeItemFromCart, (state, action) => { //UPDATED
