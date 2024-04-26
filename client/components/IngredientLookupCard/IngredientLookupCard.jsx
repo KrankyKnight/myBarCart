@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from '../../actions/actions.js';
 import './styles.scss';
 
-const IngredientLookupCard = ({name}) => {
+const IngredientLookupCard = ({ingredientID, displayName}) => {
 
   const dispatch = useDispatch();
   const totalIngredientsPerRecipeRef = useSelector(state => state.bar.totalIngredientsPerRecipeRef);
@@ -31,8 +31,8 @@ const IngredientLookupCard = ({name}) => {
   }
 
   return(
-    <button className='ingredientCard' onClick={addToCart}>
-      {name}
+    <button id={ingredientID} className='ingredientCard' onClick={addToCart}>
+      {displayName}
     </button>
   )
 }

@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs/promises');
+const db = require('../db/model');
 
 const cartController = {
   addToCart: async (req, res, next) => {
@@ -22,16 +23,15 @@ const cartController = {
   },
 
   getAllIngredients: async (req, res, next) => {
-    const ingredientList = await fs.readFile(path.resolve(__dirname, '../db/ingredientList.json'))
-      .then(ingredientBuffer => JSON.parse(ingredientBuffer))
+    const result = await db.query('SELECT * FROM ingredients')
+      .then(data => data[0])
       .catch(err => next({
-        log: 'Error in cartController.getAllIngredients retreiving ingredient list',
+        log: 'Error retreiving ingredients from database',
         status: 500,
         message: { err: err},
-      }));
-    const ingredientArray = Object.values(ingredientList).sort();
-    res.locals.ingredientArray = ingredientArray;
-    return next()
+      }))
+    res.locals.ingredientArray = result;
+    return next();
   }
 };
 

@@ -23,7 +23,7 @@ const APIDisplay = () => {
     if(searchText.length === 0) {
       for(const ingredient of ingredientList) {
         ingredientCount++;
-        viewOutput.push(<IngredientLookupCard key={`ingredient${ingredientCount}`} name={ingredient}/>)
+        viewOutput.push(<IngredientLookupCard key={`ingredient${ingredientCount}`} ingredientID={ingredient.id} displayName={ingredient.displayName}/>)
       };
     }
     else {

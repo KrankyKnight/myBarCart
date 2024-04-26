@@ -11,8 +11,8 @@ const Options = () => {
   
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.bar.recipes);
-  const searchText = useSelector((state) => state.bar.searchText);
   const cart = useSelector((state) => state.bar.cart);
+  const ingredientList = useSelector((state) => state.bar.ingredientList);
   const ingredientToRecipeRef = useSelector((state) => state.bar.ingredientToRecipeRef);
   const totalIngredientsPerRecipeRef = useSelector((state) => state.bar.totalIngredientsPerRecipeRef);
 
@@ -27,10 +27,12 @@ const Options = () => {
   }
 
   const generateIngredientList = () => {
-    fetch('http://localhost:3000/ingredients')
-      .then(data => data.json())
-      .then(data => dispatch(getIngredientList(data)))
-      .catch(err => console.log(`Error: ${err}`))
+    if(!ingredientList.length) {
+      fetch('http://localhost:3000/ingredients')
+        .then(data => data.json())
+        .then(data => dispatch(getIngredientList(data)))
+        .catch(err => console.log(`Error: ${err}`))
+    };
   };
 
   const dispatchPendingRecipes = (event) => {
@@ -69,7 +71,6 @@ const Options = () => {
   if(recipes === 'pending') fetchRecipes();
 
   useEffect(generateIngredientList, []);
-  useEffect(() => console.log(searchText));
 
   return(
     <div id='Options' className='input'>

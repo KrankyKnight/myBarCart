@@ -3,6 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
   viewMode: 'none',
+  ingredients: [],
   ingredientList: [],
   filteredIngredientList: [],
   searchText: '',
@@ -16,7 +17,11 @@ const barReducer = createReducer(initialState, (builder) => {
   builder
 
     .addCase(actions.getIngredientList, (state, action) => {
-      state.ingredientList = action.payload;
+      state.ingredientList = action.payload.sort((a,b) => {
+        if(a.lookupName < b.lookupName) return -1;
+        if(b.lookupName < a.lookupName) return 1;
+        return 0;
+      });
     })
 
     .addCase(actions.setViewIngredientsList, (state, action) => {
