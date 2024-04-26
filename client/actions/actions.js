@@ -9,3 +9,5 @@ export const pendingRecipes = createAction('PENDING_RECIPES');
 export const addItemToCart = createAction('ADD_ITEM_TO_CART');
 export const setViewIngredientsList = createAction('SET_VIEW_INGREDIENTS_LIST');
 export const updateSearchText = createAction('UPDATE_SEARCH_TEXT');
+export const updateRecipeList = createAction('UPDATE_RECIPE_LIST');
+export const updateRecipeListState = createAction('UPDATE_RECIPE_LIST_STATE');

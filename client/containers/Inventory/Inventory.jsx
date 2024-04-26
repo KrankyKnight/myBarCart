@@ -10,6 +10,7 @@ import './styles.scss';
 const Inventory = () => {
 
   const cart = useSelector((state) => state.bar.cart);
+  const recipeListState = useSelector((state) => state.bar.recipeListState);
 
   const newCart = [];
   let key = 0;
@@ -25,7 +26,8 @@ const Inventory = () => {
 
   return(
     <div id='Inventory' className='inventory'>
-      <ul>
+      <div id="recipeListState">{recipeListState}</div>
+      <ul id='inventoryList'>
         {cart.length ? newCart:  
           <div className='barInventory'>
             Inventory Empty

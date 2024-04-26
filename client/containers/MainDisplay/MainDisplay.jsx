@@ -3,17 +3,37 @@
  */
 
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Inventory from '../Inventory'
 import Options from '../Options';
 import APIDisplay from '../APIDisplay';
+import { updateRecipeListState, updateRecipeList } from '../../actions/actions';
 import './styles.scss';
 
 const MainDisplay = () => {
+  const dispatch = useDispatch();
+  const cart = useSelector(state => state.bar.cart);
+  const recipeList = useSelector(state => state.bar.recipeList);
 
-  const state = useSelector(state => state.bar);
-
-  useEffect(() => console.log('current state: ', state));
+  useEffect(() => dispatch(updateRecipeListState('done')), []);
+  useEffect(() => {
+    fetch('http://localhost:3000/recipes/getRecipeList', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({recipeIdArray: cart}),
+    })
+      .then(data => data.json())
+      .then(data => {
+        if(Array.isArray(data)) dispatch(updateRecipeList(data))
+        else {
+          dispatch(updateRecipeListState('done'));
+          console.error(data.err);
+        };
+      })
+      .catch(err => console.error(err));
+  }, [cart])
 
   return(
     <div id='MainDisplay' className='displayGrid'>

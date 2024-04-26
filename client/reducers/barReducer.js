@@ -3,14 +3,13 @@ import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
   viewMode: 'none',
-  ingredients: [],
   ingredientList: [],
   filteredIngredientList: [],
+  recipeList: [],
+  recipeListState: 'Updating...',
   searchText: '',
   recipes: [],
   cart: {length:0},
-  ingredientToRecipeRef: {},
-  totalIngredientsPerRecipeRef: {},
 }
 
 const barReducer = createReducer(initialState, (builder) => {
@@ -28,11 +27,12 @@ const barReducer = createReducer(initialState, (builder) => {
       state.viewMode = 'ingredients';
     })
 
-    .addCase(actions.updateSearchText, (state, action) => {
-      state.searchText = action.payload;
-      const minSearch = state.searchText.replace(/\s*/, "");
-      const regex = new RegExp(minSearch, 'i');
-      state.filteredIngredientList = state.ingredientList.filter(ingredient => regex.test(ingredient.lookupName))
+    .addCase(actions.addItemToCart, (state, action) => {
+      const {id, displayName} = action.payload;
+      if(state.cart[displayName] === undefined) {
+        state.cart[displayName] = id;
+        state.cart.length++;
+      };
     })
 
     .addCase(actions.removeItemFromCart, (state, action) => { //UPDATED
@@ -41,6 +41,13 @@ const barReducer = createReducer(initialState, (builder) => {
         delete state.cart[entryToRemove];
         state.cart.length--;
       };
+    })
+    
+    .addCase(actions.updateSearchText, (state, action) => {
+      state.searchText = action.payload;
+      const minSearch = state.searchText.replace(/\s*/, "");
+      const regex = new RegExp(minSearch, 'i');
+      state.filteredIngredientList = state.ingredientList.filter(ingredient => regex.test(ingredient.lookupName))
     })
 
     .addCase(actions.pendingRecipes, (state, action) => {
@@ -56,14 +63,14 @@ const barReducer = createReducer(initialState, (builder) => {
       }
     })
 
-    .addCase(actions.addItemToCart, (state, action) => { //UPDATED
-      const {ingredient, newIngredientEntry, totalIngredientsPerRecipeRef} = action.payload;
-      if(state.cart[ingredient] === undefined) {
-        state.cart[ingredient] = ingredient;
-        state.cart.length++;
-      };
-      state.ingredientToRecipeRef[ingredient] = newIngredientEntry[ingredient];
-      state.totalIngredientsPerRecipeRef = totalIngredientsPerRecipeRef;
+    .addCase(actions.updateRecipeListState, (state, action) => {
+      if(action.payload === 'updating') state.recipeListState = 'Updating Recipe Total...';
+      else if(action.payload === 'done') state.recipeListState = `Total Recipes: 0`;
+    })
+
+    .addCase(actions.updateRecipeList, (state, action) => {
+      state.recipeList = action.payload;
+      state.recipeListState = `Total Recipes: ${action.payload.length}`;
     })
 
     .addDefaultCase((state) => state);

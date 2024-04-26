@@ -11,10 +11,8 @@ const Options = () => {
   
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.bar.recipes);
-  const cart = useSelector((state) => state.bar.cart);
+  const recipeList = useSelector((state) => state.bar.recipeList);
   const ingredientList = useSelector((state) => state.bar.ingredientList);
-  const ingredientToRecipeRef = useSelector((state) => state.bar.ingredientToRecipeRef);
-  const totalIngredientsPerRecipeRef = useSelector((state) => state.bar.totalIngredientsPerRecipeRef);
 
   const displayIngredients = (event) => {
     event.preventDefault();
@@ -41,27 +39,12 @@ const Options = () => {
   };
 
   const fetchRecipes = async () => {
-    const conditionCheck = {};
-    const recipesToFetch = [];
-
-    for(const ingredient in cart) {
-      if(ingredient !== 'length'){
-        for(const recipeId of ingredientToRecipeRef[ingredient]) {
-          console.log(ingredient, ': ', recipeId);
-          if(conditionCheck[recipeId] === undefined) conditionCheck[recipeId] = 0;
-          conditionCheck[recipeId]++;
-        };
-      };
-    };
-    for(const recipeId in conditionCheck) {
-      if(conditionCheck[recipeId] === totalIngredientsPerRecipeRef[recipeId]) recipesToFetch.push(recipeId);
-    };
-    await fetch('http://localhost:3000/recipes', {
+    await fetch('http://localhost:3000/recipes/getRecipes', {
       method: "POST",
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify({recipeIdArray: recipesToFetch}),
+      body: JSON.stringify({recipeIdArray: recipeList}),
     })
       .then(data => data.json())
       .then(data => dispatch(displayRecipes(data)))

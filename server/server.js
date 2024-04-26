@@ -29,11 +29,11 @@ app.use('/recipes', recipesRouter);
 
 app.use('*', (req, res) => res.status(404));
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   const defaultError = {
     log: 'Express error handler caught unknown middleware error',
     status: 400,
-    message: { err: 'An error occured'},
+    message: { err: "An error occured"},
   };
   const errorObject = Object.assign({}, defaultError, err);
   console.log(errorObject.log);

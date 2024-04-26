@@ -2,40 +2,6 @@ const fetch = require('node-fetch');
 
 const recipeController = {
 
-  updateTotalIngredientsPerRecipeRef: async (req, res, next) => {
-
-    const {ingredient, totalIngredientsPerRecipeRef} = req.body;
-    const {newIngredientEntry} = res.locals;
-
-    if(newIngredientEntry[ingredient].length){
-      for(const recipeId of newIngredientEntry[ingredient]) {
-        if(totalIngredientsPerRecipeRef[recipeId] === undefined) {
-          await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${recipeId}`)
-            .then(fullRecipeBuffer => fullRecipeBuffer.json())
-            .then(fullRecipeData => {
-              let count = 0;
-              for(const key in fullRecipeData.drinks[0]) {
-                if(key.substring(0, 13) === 'strIngredient'
-                  && fullRecipeData.drinks[0][key]) {
-                    count++
-                };
-              };
-              totalIngredientsPerRecipeRef[recipeId] = count;
-            })
-            .catch(err => next({
-              log: 'Error in cartController.addToCart retreiving full recipe data',
-              status: 500,
-              message: { err: err},
-            }));
-        }
-      };
-    };
-
-    res.locals.totalIngredientsPerRecipeRef = totalIngredientsPerRecipeRef;
-
-    return next();
-  },
-
   getRecipes: async (req, res, next) => {
     console.log('getting recipes')
     const {recipeIdArray} = req.body;
@@ -70,6 +36,7 @@ const recipeController = {
           message: { err: err},
         }))
     }
+
     // id, name, content, glass, instructions, image, ingredients
     res.locals.recipeArray = newRecipeArray;
 
