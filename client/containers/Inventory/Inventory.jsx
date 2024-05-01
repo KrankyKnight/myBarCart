@@ -1,5 +1,5 @@
 /**
- * @description display stored ingredients
+ * @description display users selected ingredients
  */
 
 import React from 'react';

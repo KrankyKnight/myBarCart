@@ -1,5 +1,5 @@
 /**
- * @description main container for display
+ * @description Top level container for application
  */
 
 import React, { useEffect } from 'react';
