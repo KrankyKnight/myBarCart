@@ -2,12 +2,12 @@
  * @description Top level container for application
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Inventory from '../Inventory'
-import Options from '../Options';
-import APIDisplay from '../APIDisplay';
-import { updateRecipeListState, updateRecipeList } from '../../actions/actions';
+import Inventory from '../containers/Inventory'
+import Options from '../containers/Options';
+import APIDisplay from '../containers/APIDisplay';
+import { updateRecipeListState, updateRecipeList } from '../actions/actions';
 import './styles.scss';
 
 const MainDisplay = () => {
