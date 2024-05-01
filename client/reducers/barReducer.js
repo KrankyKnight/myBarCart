@@ -10,7 +10,7 @@ const initialState = {
   searchText: '',
   recipes: [],
   cart: {length:0},
-}
+};
 
 const barReducer = createReducer(initialState, (builder) => {
   builder
@@ -74,6 +74,6 @@ const barReducer = createReducer(initialState, (builder) => {
     })
 
     .addDefaultCase((state) => state);
-})
+});
 
 export default barReducer;
