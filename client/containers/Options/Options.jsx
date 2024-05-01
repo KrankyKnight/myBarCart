@@ -2,7 +2,7 @@
  * @description API search options
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { getIngredientList, setViewIngredientsList, displayRecipes, pendingRecipes, updateSearchText } from '../../actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
@@ -17,20 +17,11 @@ const Options = () => {
   const displayIngredients = (event) => {
     event.preventDefault();
     dispatch(setViewIngredientsList());
-  }
+  };
 
   const newSearchText = (event) => {
     event.preventDefault();
     dispatch(updateSearchText(event.target.value));
-  }
-
-  const generateIngredientList = () => {
-    if(!ingredientList.length) {
-      fetch('http://localhost:3000/ingredients')
-        .then(data => data.json())
-        .then(data => dispatch(getIngredientList(data)))
-        .catch(err => console.log(`Error: ${err}`))
-    };
   };
 
   const dispatchPendingRecipes = (event) => {
@@ -38,8 +29,17 @@ const Options = () => {
     dispatch(pendingRecipes());
   };
 
-  const fetchRecipes = async () => {
-    await fetch('http://localhost:3000/recipes/getRecipes', {
+  const generateIngredientList = useCallback(() => {
+    if(!ingredientList.length) {
+      fetch('http://localhost:3000/ingredients')
+        .then(data => data.json())
+        .then(data => dispatch(getIngredientList(data)))
+        .catch(err => console.log(`Error: ${err}`))
+    };
+  }, []);
+
+  const fetchRecipes = useCallback(() => {
+    fetch('http://localhost:3000/recipes/getRecipes', {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -49,7 +49,7 @@ const Options = () => {
       .then(data => data.json())
       .then(data => dispatch(displayRecipes(data)))
       .catch(err => console.error(err));
-  };
+  }, [recipeList]);
 
   if(recipes === 'pending') fetchRecipes();
 
