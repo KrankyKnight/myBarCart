@@ -13,10 +13,8 @@ import './styles.scss';
 const MainDisplay = () => {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.bar.cart);
-  const recipeList = useSelector(state => state.bar.recipeList);
 
-  useEffect(() => dispatch(updateRecipeListState('done')), []);
-  useEffect(() => {
+  const updateRecipeListCall = useCallback(() => {
     fetch('http://localhost:3000/recipes/getRecipeList', {
       method: "POST",
       headers: {
@@ -33,7 +31,10 @@ const MainDisplay = () => {
         };
       })
       .catch(err => console.error(err));
-  }, [cart])
+  }, [cart]);
+
+  useEffect(() => dispatch(updateRecipeListState('done')), []);
+  useEffect(() => updateRecipeListCall(), [cart]);
 
   return(
     <div id='MainDisplay' className='displayGrid'>
