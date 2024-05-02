@@ -23,7 +23,7 @@ const barReducer = createReducer(initialState, (builder) => {
       });
     })
 
-    .addCase(actions.setViewIngredientsList, (state, action) => {
+    .addCase(actions.setViewIngredientsList, (state) => {
       state.viewMode = 'ingredients';
     })
 
@@ -50,7 +50,7 @@ const barReducer = createReducer(initialState, (builder) => {
       state.filteredIngredientList = state.ingredientList.filter(ingredient => regex.test(ingredient.lookupName))
     })
 
-    .addCase(actions.pendingRecipes, (state, action) => {
+    .addCase(actions.pendingRecipes, (state) => {
       state.viewMode = 'recipes';
       state.recipes = 'pending';
     })

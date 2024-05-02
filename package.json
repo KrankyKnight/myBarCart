@@ -5,7 +5,8 @@
   "scripts": {
     "start": "NODE_ENV=production node server/server.js",
     "build": "webpack",
-    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --hot --progress --color\" \"cross-env NODE_ENV=development nodemon ./server/server.js\""
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --hot --progress --color\" \"cross-env NODE_ENV=development nodemon ./server/server.js\"",
+    "lint": "esling client/"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -27,11 +28,15 @@
     "@babel/core": "^7.22.1",
     "@babel/preset-env": "^7.22.4",
     "@babel/preset-react": "^7.22.3",
+    "@eslint/js": "^9.1.1",
     "@webpack-cli/generators": "^3.0.6",
     "babel-loader": "^9.1.2",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "globals": "^15.1.0",
     "html-webpack-plugin": "^5.5.1",
     "mini-css-extract-plugin": "^2.7.6",
     "nodemon": "^2.0.22",
