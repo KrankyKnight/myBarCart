@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { removeItemFromCart } from '../../actions/actions';
+import { removeItemFromCart } from '../../actions';
 import { useDispatch } from 'react-redux';
 
 const InventoryItem = ({name}) => {

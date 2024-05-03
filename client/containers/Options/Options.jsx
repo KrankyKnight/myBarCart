@@ -3,7 +3,7 @@
  */
 
 import React, { useEffect, useCallback } from 'react';
-import { getIngredientList, setViewIngredientsList, displayRecipes, pendingRecipes, updateSearchText } from '../../actions/actions';
+import { getIngredientList, setViewIngredientsList, displayRecipes, pendingRecipes, updateSearchText } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
 

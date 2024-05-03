@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Inventory from '../containers/Inventory'
 import Options from '../containers/Options';
 import APIDisplay from '../containers/APIDisplay';
-import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk } from '../actions/actions';
+import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk } from '../actions';
 import './styles.scss';
 
 const MainDisplay = () => {

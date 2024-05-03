@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { updateRecipeListState, addItemToCart } from '../../actions/actions.js';
+import { updateRecipeListState, addItemToCart } from '../../actions';
 import './styles.scss';
 
 const IngredientLookupCard = ({ingredientID, displayName}) => {

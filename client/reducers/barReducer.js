@@ -1,4 +1,4 @@
-import * as actions from '../actions/actions.js';
+import * as actions from '../actions';
 import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
