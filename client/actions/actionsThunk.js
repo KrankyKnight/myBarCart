@@ -48,7 +48,9 @@ export const updateRecipeListCallThunk = () => {
         .then(data => data.json())
         .then(data => {
           if(data.err) console.error(data.err);
-          if(Array.isArray(data)) dispatch(action.updateRecipeList(data))
+          if(Array.isArray(data)) {
+            dispatch(action.updateRecipeList(data))
+          }
           else {
             dispatch(action.updateRecipeListState('done'));
             console.error(data.err);

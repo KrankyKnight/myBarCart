@@ -28,7 +28,9 @@ const Options = () => {
     dispatch(pendingRecipes());
   };
 
-  if(recipes === 'pending') dispatch(fetchRecipesThunk());
+  useEffect(() => {
+    if(recipes === 'pending') dispatch(fetchRecipesThunk());
+  }, [recipes])
 
   useEffect(() => {
     if(dbStatus === 'Online') dispatch(generateIngredientListThunk());

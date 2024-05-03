@@ -5,7 +5,6 @@ const cartController = {
     const {recipeIdArray} = req.body;
 
     if(!recipeIdArray.length) {
-      console.log('triggered');
       return next({
         log: 'No ingredients provided to cartController.filterRecipes',
         status: 500,

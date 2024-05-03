@@ -2,7 +2,7 @@
  * @description display ingredients or recipes after a lookup
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import RecipeCard from '../../components/RecipeCard';
 import IngredientLookupCard from '../../components/IngredientLookupCard';

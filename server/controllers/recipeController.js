@@ -3,7 +3,6 @@ const fetch = require('node-fetch');
 const recipeController = {
 
   getRecipes: async (req, res, next) => {
-    console.log('getting recipes')
     const {recipeIdArray} = req.body;
     let newRecipeArray = [];
 
