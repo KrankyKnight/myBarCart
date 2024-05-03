@@ -33,7 +33,7 @@ const recipeController = {
         .catch(err => next({
           log: 'Error in recipeController.getRecipes retreiving recipe list',
           status: 500,
-          message: { err: err},
+          message: {err: `${err}`},
         }))
     }
 

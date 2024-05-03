@@ -34,8 +34,11 @@ const Options = () => {
     if(!ingredientList.length) {
       fetch('http://localhost:3000/ingredients')
         .then(data => data.json())
-        .then(data => dispatch(getIngredientList(data)))
-        .catch(err => {console.log(`Error: ${err}`)})
+        .then(data => {
+          if(data.err) console.error(data.err);
+          dispatch(getIngredientList(data));
+        })
+        .catch(err => console.log(`Error: ${err}`))
     };
   }, []);
 
@@ -48,7 +51,10 @@ const Options = () => {
       body: JSON.stringify({recipeIdArray: recipeList}),
     })
       .then(data => data.json())
-      .then(data => dispatch(displayRecipes(data)))
+      .then(data => {
+        if(data.err) console.error(data.err);
+        dispatch(displayRecipes(data));
+      })
       .catch(err => console.error(err));
   }, [recipeList]);
 

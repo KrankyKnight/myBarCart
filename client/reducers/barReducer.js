@@ -9,7 +9,7 @@ const initialState = {
   recipeListState: 'Updating...',
   searchText: '',
   recipes: [],
-  cart: {length:0},
+  cart: {},
   dbStatus: 'Offline',
 };
 
@@ -22,6 +22,12 @@ const barReducer = createReducer(initialState, (builder) => {
         if(b.lookupName < a.lookupName) return 1;
         return 0;
       });
+    })
+
+    .addCase(actions.checkLocalStorage, (state) => {
+      const storage = JSON.parse(window.sessionStorage.getItem('mbc-cart'));
+      if(storage && storage.length) state.cart = storage;
+      else state.cart = {length:0};
     })
 
     .addCase(actions.setViewIngredientsList, (state) => {
@@ -77,7 +83,8 @@ const barReducer = createReducer(initialState, (builder) => {
     })
 
     .addCase(actions.fetchDbStatusSuccess, (state, action) => {
-      state.dbStatus = action.payload;
+      if(action.payload !== 'Online' && action.payload !== 'Pending') state.dbStatus = 'Offline';
+      else state.dbStatus = action.payload;
     })
 
     .addCase(actions.fetchDbStatusFailure, (state) => {

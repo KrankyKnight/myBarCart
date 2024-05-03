@@ -11,7 +11,7 @@ const cartController = {
       return next({
         log: 'No ingredients provided to cartController.filterRecipes',
         status: 500,
-        message: { err: "No ingredients selected"},
+        message: {err: `${err}`},
       });
     };
 
@@ -38,7 +38,7 @@ const cartController = {
       .catch(err => next({
         log: 'Error retreiving recipes from database in cartController.filterRecipes',
         status: 500,
-        message: { err: err},
+        message: {err: `${err}`},
       }));
     
     if(result === undefined) res.locals.recipeIdList = [];
@@ -59,7 +59,7 @@ const cartController = {
       .catch(err => next({
         log: 'Error retreiving ingredients from database in cartController.getAllIngredients',
         status: 500,
-        message: { err: err},
+        message: {err: `${err}`},
       }))
     res.locals.ingredientArray = result;
     return next();

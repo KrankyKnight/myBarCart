@@ -7,10 +7,11 @@ import { createAction } from "@reduxjs/toolkit";
 /* ACTION CREATORS */
 
 export const getIngredientList = createAction('GET_INGREDIENTS');
-export const removeItemFromCart = createAction('REMOVE_ITEM_FROM_CART');
 export const displayRecipes = createAction('DISPLAY_RECIPES');
 export const pendingRecipes = createAction('PENDING_RECIPES');
+export const checkLocalStorage = createAction('CHECK_LOCAL_STORAGE');
 export const addItemToCart = createAction('ADD_ITEM_TO_CART');
+export const removeItemFromCart = createAction('REMOVE_ITEM_FROM_CART');
 export const setViewIngredientsList = createAction('SET_VIEW_INGREDIENTS_LIST');
 export const updateSearchText = createAction('UPDATE_SEARCH_TEXT');
 export const updateRecipeList = createAction('UPDATE_RECIPE_LIST');
@@ -27,12 +28,13 @@ export const fetchDbStatusThunk = () => {
     await fetch('/db')
       .then(data => data.json())
       .then(data => {
-        dispatch(fetchDbStatusSuccess(data))
+        if(data.err) console.error(data.err);
+        dispatch(fetchDbStatusSuccess(data));
         if(data === 'Offline') dispatch(pingLoopThunk());
       })
       .catch(err => {
-        dispatch(fetchDbStatusFailure())
-        throw err;
+        dispatch(fetchDbStatusFailure());
+        console.error(err);
       });
   };
 };
@@ -63,13 +65,16 @@ export const updateRecipeListCallThunk = () => {
       })
         .then(data => data.json())
         .then(data => {
+          if(data.err) console.error(data.err);
           if(Array.isArray(data)) dispatch(updateRecipeList(data))
           else {
             dispatch(updateRecipeListState('done'));
             console.error(data.err);
           };
         })
-        .catch(err => console.error(err));
+        .catch(err => {
+          console.error(err)
+        });
     };
   };
 };

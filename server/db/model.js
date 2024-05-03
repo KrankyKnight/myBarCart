@@ -13,8 +13,8 @@ const pool = mysql.createPool({
 module.exports = {
   test: async () => {
     return await pool.getConnection()
-      .then(() => 'Online')
-      .catch(() => 'Offline');
+      .then(() => ['Online', null])
+      .catch((err) => ['Offline', err]);
   },
   query: async (query) => {
     return await pool.getConnection()
@@ -26,7 +26,7 @@ module.exports = {
         return result;
       })
       .catch(err => {
-        throw err;
+        return new Error(err);
       })
   }
 };
