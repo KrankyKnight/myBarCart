@@ -50,7 +50,7 @@ const APIDisplay = () => {
     <div id='APIDisplay' className={`api ${viewMode}`}>
       {
         viewMode === 'none' ? 
-          <p className='blurb'>
+          <p>
             <h4>Welcome to myBarCart</h4> 
             <div>This app brought to you thanks to the wonderful devs at <em>thecocktailDB</em></div>
             <div>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a></div>
@@ -61,9 +61,9 @@ const APIDisplay = () => {
             {viewOutput}
           </ul>
         :viewMode === 'recipes' && recipes === 'pending' ? 
-          <span className='blurb'>Fetching your recipes. Please be patient, API's are expensive and I am cheap. Pinging one... alot.</span>
+          <span className='blurb'>Fetching your recipes...</span>
         :viewMode === 'recipes' && !recipes.length ?
-          <span className='blurb'>Sadly there are no recipes in the database that fully contain your cart. Time to go shopping... or do shots. No judgement.</span>
+          <span className='blurb'>Sadly there are no recipes in the database that you have all the ingredients for. Time to go shopping... or do shots. No judgement.</span>
         :viewMode === 'recipes' && recipes.length ? 
           recipeCards
         :

@@ -21,6 +21,14 @@
   align-items: baseline;
 }
 
+.blurb {
+  display: inline-flex;
+  justify-self: center;
+  align-items: center;
+  font-size: 30px;
+  height: 100%;
+}
+
 .none {
   text-align: center;
   font-size: 30px;
