@@ -11,7 +11,7 @@ const cartController = {
       return next({
         log: 'No ingredients provided to cartController.filterRecipes',
         status: 500,
-        message: {err: `${err}`},
+        message: {err: `No Ingredients Sent`},
       });
     };
 
