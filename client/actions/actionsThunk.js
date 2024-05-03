@@ -60,3 +60,37 @@ export const updateRecipeListCallThunk = () => {
     };
   };
 };
+
+export const generateIngredientListThunk = () => {
+  return async (dispatch, getState) => {
+    const ingredientList = getState().bar.ingredientList;
+    if(!ingredientList.length) {
+      fetch('http://localhost:3000/ingredients')
+        .then(data => data.json())
+        .then(data => {
+          if(data.err) console.error(data.err);
+          dispatch(action.getIngredientList(data));
+        })
+        .catch(err => console.log(err))
+    };
+  };
+};
+
+export const fetchRecipesThunk = () => {
+  return async (dispatch, getState) => {
+    const recipeList = getState().bar.recipeList;
+    fetch('http://localhost:3000/recipes/getRecipes', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({recipeIdArray: recipeList}),
+    })
+      .then(data => data.json())
+      .then(data => {
+        if(data.err) console.error(data.err);
+        dispatch(action.displayRecipes(data));
+      })
+      .catch(err => console.error(err));
+  };
+};

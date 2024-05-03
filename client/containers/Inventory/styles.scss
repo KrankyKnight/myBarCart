@@ -2,6 +2,8 @@
 
 .inventory {
   grid-area: inventory;
+  display: flex;
+  flex-direction: column;
   background-color: $darkBackground;
   border-radius: 12px;
   margin: 10px;
@@ -9,7 +11,7 @@
   #inventoryList{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     box-sizing: border-box;
     height: 90%;
@@ -20,10 +22,20 @@
   }
   #recipeListState{
     box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     min-height: 50px;
     height: 10%;
     padding: 10px;
     font-size: 30px;
+    button {
+      display: inline-flex;
+      align-items: center;
+      height: 30px;
+      font-size: 20px;
+      font-weight: bold;
+    }
   }
 }

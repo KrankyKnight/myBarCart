@@ -2,13 +2,15 @@
  * @description display users selected ingredients
  */
 
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import InventoryItem from '../../components/InventoryItem';
 import './styles.scss';
+import { emptyCart } from '../../actions';
 
 const Inventory = () => {
 
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.bar.cart);
   const recipeListState = useSelector((state) => state.bar.recipeListState);
 
@@ -24,9 +26,16 @@ const Inventory = () => {
     };
   };
 
+  const clearCart = useCallback(() => {
+    dispatch(emptyCart());
+  }, [])
+
   return(
     <div id='Inventory' className='inventory'>
-      <div id="recipeListState">{recipeListState}</div>
+      <div id="recipeListState">
+        <div>{recipeListState}</div>
+        <button onClick={clearCart}>Clear</button>
+      </div>
       <ul id='inventoryList'>
         {cart.length ? newCart:  
           <div className='barInventory'>

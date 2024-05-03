@@ -24,14 +24,18 @@ const barReducer = createReducer(initialState, (builder) => {
       });
     })
 
+    .addCase(actions.setViewIngredientsList, (state) => {
+      state.viewMode = 'ingredients';
+    })
+
     .addCase(actions.checkLocalStorage, (state) => {
       const storage = JSON.parse(window.sessionStorage.getItem('mbc-cart'));
       if(storage && storage.length) state.cart = storage;
       else state.cart = {length:0};
     })
 
-    .addCase(actions.setViewIngredientsList, (state) => {
-      state.viewMode = 'ingredients';
+    .addCase(actions.emptyCart, (state, action) => {
+      state.cart = {length: 0};
     })
 
     .addCase(actions.addItemToCart, (state, action) => {

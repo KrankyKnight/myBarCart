@@ -8,6 +8,7 @@ export const getIngredientList = createAction('GET_INGREDIENTS');
 export const displayRecipes = createAction('DISPLAY_RECIPES');
 export const pendingRecipes = createAction('PENDING_RECIPES');
 export const checkLocalStorage = createAction('CHECK_LOCAL_STORAGE');
+export const emptyCart = createAction('EMPTY_CART');
 export const addItemToCart = createAction('ADD_ITEM_TO_CART');
 export const removeItemFromCart = createAction('REMOVE_ITEM_FROM_CART');
 export const setViewIngredientsList = createAction('SET_VIEW_INGREDIENTS_LIST');
