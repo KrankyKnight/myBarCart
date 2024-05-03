@@ -7,13 +7,17 @@ const pool = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  waitForConnections: false
+  waitForConnections: false,
+  idleTimeout: 10000,
 });
 
 module.exports = {
   test: async () => {
     return await pool.getConnection()
-      .then(() => ['Online', null])
+      .then((connection) => {
+        connection.release();
+        return ['Online', null];
+      })
       .catch((err) => ['Offline', err]);
   },
   query: async (query) => {
