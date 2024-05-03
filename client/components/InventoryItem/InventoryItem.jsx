@@ -18,8 +18,7 @@ const InventoryItem = ({name}) => {
 
   return(
     <li className='barCard'>
-      <span id={name}>{name}</span>
-      <button onClick={removeItem}>-</button>
+      <button id={name} onClick={removeItem}>{name}</button>
     </li>
   )
 }
