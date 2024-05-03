@@ -9,7 +9,7 @@ const dbController = {
         if(data[1]) {
           return next({
             log: 'Express error handler caught error testing database connection in dbController.testConnection',
-            status: 666,
+            status: 503,
             message: {err: `${data[1]}`},
           })
         }

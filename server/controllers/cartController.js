@@ -1,5 +1,3 @@
-const path = require('path');
-const fs = require('fs/promises');
 const db = require('../db/model');
 
 const cartController = {

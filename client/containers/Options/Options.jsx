@@ -38,7 +38,7 @@ const Options = () => {
           if(data.err) console.error(data.err);
           dispatch(getIngredientList(data));
         })
-        .catch(err => console.log(`Error: ${err}`))
+        .catch(err => console.log(err))
     };
   }, []);
 
