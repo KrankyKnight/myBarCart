@@ -13,6 +13,7 @@ const Options = () => {
   const recipes = useSelector((state) => state.bar.recipes);
   const recipeList = useSelector((state) => state.bar.recipeList);
   const ingredientList = useSelector((state) => state.bar.ingredientList);
+  const dbStatus = useSelector((state) => state.bar.dbStatus);
 
   const displayIngredients = (event) => {
     event.preventDefault();
@@ -34,7 +35,7 @@ const Options = () => {
       fetch('http://localhost:3000/ingredients')
         .then(data => data.json())
         .then(data => dispatch(getIngredientList(data)))
-        .catch(err => console.log(`Error: ${err}`))
+        .catch(err => {console.log(`Error: ${err}`)})
     };
   }, []);
 
@@ -53,10 +54,13 @@ const Options = () => {
 
   if(recipes === 'pending') fetchRecipes();
 
-  useEffect(generateIngredientList, []);
+  useEffect(() => {
+    if(dbStatus === 'Online') generateIngredientList();
+  }, [dbStatus]);
 
   return(
     <div id='Options' className='input'>
+      <div id="db-status" className={`status ${dbStatus}`}>DB Status: {dbStatus}</div>
       <button onClick={dispatchPendingRecipes}>Generate Recipes</button>
       <input 
         name='ingredient' 

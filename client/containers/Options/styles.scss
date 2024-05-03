@@ -9,6 +9,24 @@
   border-radius: 12px;
   margin: 10px;
   box-shadow: $darkBackgroundShadow 5px 5px 5px;
+  #db-status.Offline {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: red;
+  }
+  #db-status.Pending {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: Orange;
+  }
+  #db-status.Online {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: green;
+  }
   button {
     height: 60px;
     font-size: 30px;

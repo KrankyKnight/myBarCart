@@ -10,6 +10,7 @@ const initialState = {
   searchText: '',
   recipes: [],
   cart: {length:0},
+  dbStatus: 'Offline',
 };
 
 const barReducer = createReducer(initialState, (builder) => {
@@ -56,11 +57,8 @@ const barReducer = createReducer(initialState, (builder) => {
     })
 
     .addCase(actions.displayRecipes, (state, action) => {
-      if(!action.payload.length) {
-        state.recipes = [];
-      } else {
-        state.recipes = action.payload;
-      }
+      if(!action.payload.length) state.recipes = []; 
+      else state.recipes = action.payload;
     })
 
     .addCase(actions.updateRecipeListState, (state, action) => {
@@ -71,6 +69,19 @@ const barReducer = createReducer(initialState, (builder) => {
     .addCase(actions.updateRecipeList, (state, action) => {
       state.recipeList = action.payload;
       state.recipeListState = `Total Recipes: ${action.payload.length}`;
+    })
+
+    // DB Tests
+    .addCase(actions.fetchDbStatusRequest, (state) => {
+      state.dbStatus = 'pending'
+    })
+
+    .addCase(actions.fetchDbStatusSuccess, (state, action) => {
+      state.dbStatus = action.payload;
+    })
+
+    .addCase(actions.fetchDbStatusFailure, (state) => {
+      state.dbStatus = 'Offline';
     })
 
     .addDefaultCase((state) => state);

@@ -7,14 +7,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV;
 
-const ingredientsRouter = require('./routers/ingredientsRouter.js')
-const recipesRouter = require('./routers/recipesRouter.js')
+const ingredientsRouter = require('./routers/ingredientsRouter.js');
+const recipesRouter = require('./routers/recipesRouter.js');
+const dbRouter = require('./routers/dbRouter.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 if(NODE_ENV === 'development') {
   app.use(cors({ origin: "http://localhost:8080" }));
-}
+};
 
 /* STATIC */
 
@@ -24,6 +25,7 @@ app.use('/', express.static(path.join(__dirname, '../build')));
 
 app.use('/ingredients', ingredientsRouter);
 app.use('/recipes', recipesRouter);
+app.use('/db', dbRouter);
 
 /* ERROR HANDLING */
 
@@ -32,7 +34,7 @@ app.use('*', (req, res) => res.status(404));
 app.use((err, req, res, next) => {
   const defaultError = {
     log: 'Express error handler caught unknown middleware error',
-    status: 400,
+    status: 500,
     message: { err: "An error occured"},
   };
   const errorObject = Object.assign({}, defaultError, err);

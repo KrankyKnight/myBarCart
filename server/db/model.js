@@ -11,6 +11,11 @@ const pool = mysql.createPool({
 });
 
 module.exports = {
+  test: async () => {
+    return await pool.getConnection()
+      .then(() => 'Online')
+      .catch(() => 'Offline');
+  },
   query: async (query) => {
     return await pool.getConnection()
       .then(async (connection) => {
