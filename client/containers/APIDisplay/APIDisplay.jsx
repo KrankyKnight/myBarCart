@@ -61,17 +61,23 @@ const APIDisplay = () => {
             {viewOutput}
           </ul>
         :viewMode === 'recipes' && recipes === 'pending' ? 
-          <span className='blurb'>Fetching your recipes...</span>
+          <div className='blurb'>
+            <span className='info-text'>Fetching your recipes...</span>
+          </div>
         :viewMode === 'recipes' && !recipes.length ?
-          <span className='blurb'>Sadly there are no recipes in the database that you have all the ingredients for. Time to go shopping... or do shots. No judgement.</span>
+          <div className='blurb'>
+            <span className='info-text'>Sadly there are no recipes in the database that you have all the ingredients for. Time to go shopping... or do shots. No judgement.</span>
+          </div>
         :viewMode === 'error' && !recipes.length ?
-          <span className='blurb'>There was an error contacting the server... shots?</span>
+          <div className='blurb'>
+            <span className='info-text'>There was an error contacting the server... shots?</span>
+          </div>
         :viewMode === 'recipes' && recipes.length ? 
           recipeCards
         :
-          <div>
-            <span className='blurb'>This should not be displaying. Shhh... don't tell anyone...</span>
-            <span className='blurb'>Something is not right... good luck code man!</span>
+          <div className='blurb'>
+            <div className='info-text'>To the user! You found me! The message that means something weird broke! Congratulations and sorry for the invonvenience!</div>
+            <div className='info-text'>To the dev: Something is not right and good luck code man!</div>
           </div>
       }
     </div>

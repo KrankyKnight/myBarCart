@@ -22,11 +22,17 @@
 }
 
 .blurb {
-  display: inline-flex;
-  justify-self: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  font-size: 30px;
-  height: 100%;
+  justify-content: center;
+  .info-text {
+    text-wrap: balance;
+    text-align: center;
+    margin: 10px;
+    font-size: 30px;
+    height: 100%;
+  }
 }
 
 .none {
