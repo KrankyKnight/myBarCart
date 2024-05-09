@@ -24,7 +24,11 @@ module.exports = {
     return await pool.getConnection()
       .then(async (connection) => {
         console.log('connection retreived');
-        const result = await connection.query(query);
+        const result = await connection.query(query)
+          .catch(err => {
+            connection.release();
+            return new Error(err);
+          });
         connection.release();
         console.log('data retreived');
         return result;
