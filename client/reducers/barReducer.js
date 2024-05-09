@@ -66,6 +66,10 @@ const barReducer = createReducer(initialState, (builder) => {
       state.recipes = 'pending';
     })
 
+    .addCase(actions.serverError, (state) => {
+      state.viewMode = 'error';
+    })
+
     .addCase(actions.displayRecipes, (state, action) => {
       if(!action.payload.length) state.recipes = []; 
       else state.recipes = action.payload;

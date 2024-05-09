@@ -64,6 +64,8 @@ const APIDisplay = () => {
           <span className='blurb'>Fetching your recipes...</span>
         :viewMode === 'recipes' && !recipes.length ?
           <span className='blurb'>Sadly there are no recipes in the database that you have all the ingredients for. Time to go shopping... or do shots. No judgement.</span>
+        :viewMode === 'error' && !recipes.length ?
+          <span className='blurb'>There was an error contacting the server... shots?</span>
         :viewMode === 'recipes' && recipes.length ? 
           recipeCards
         :

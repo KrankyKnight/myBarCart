@@ -12,26 +12,11 @@ export const fetchDbStatusThunk = () => {
       .then(data => {
         if(data.err) console.error(data.err);
         dispatch(action.fetchDbStatusSuccess(data));
-        if(data === 'Offline' || data.err) dispatch(pingLoopThunk());
       })
       .catch(err => {
         dispatch(action.fetchDbStatusFailure());
         console.error(err);
       });
-  };
-};
-
-export const pingLoopThunk = () => {
-  return async (dispatch) => {
-    const idle = () => {
-      setTimeout(() => {
-        dispatch(fetchDbStatusThunk());
-      }, 2000);
-    };
-    setTimeout(() => {
-      dispatch(action.fetchDbStatusSuccess('Pending')); 
-      idle();
-    }, 8000);
   };
 };
 
@@ -93,6 +78,9 @@ export const fetchRecipesThunk = () => {
         if(data.err) console.error(data.err);
         dispatch(action.displayRecipes(data));
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        dispatch(action.serverError());
+        console.error(err)
+      });
   };
 };

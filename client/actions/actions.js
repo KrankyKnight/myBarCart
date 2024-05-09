@@ -18,3 +18,4 @@ export const updateRecipeListState = createAction('UPDATE_RECIPE_LIST_STATE');
 export const fetchDbStatusRequest = createAction('FETCH_DB_STATUS_REQUEST');
 export const fetchDbStatusSuccess = createAction('FETCH_DB_STATUS_SUCCESS');
 export const fetchDbStatusFailure = createAction('FETCH_DB_STATUS_FAILURE');
+export const serverError = createAction('SERVER_ERROR');
