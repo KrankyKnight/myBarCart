@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
 
-import MainDisplay from './MainDisplay';
+import App from './App/index.js';
 import store from './store.js';
 import './scss/styles.scss';
 
@@ -11,6 +11,6 @@ const root = createRoot(domNode);
 
 root.render(
     <Provider store={store}>
-        <MainDisplay key='MainDisplay'/>
+        <App key='App'/>
     </Provider>
 )

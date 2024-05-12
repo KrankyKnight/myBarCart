@@ -4,11 +4,11 @@
 
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import InventoryItem from '../../components/InventoryItem';
+import InventoryItem from '../InventoryItem';
 import './styles.scss';
 import { emptyCart } from '../../actions';
 
-const Inventory = () => {
+export const InventoryDisplay = () => {
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.bar.cart);
@@ -31,19 +31,17 @@ const Inventory = () => {
   }, [])
 
   return(
-    <div id='Inventory' className='inventory'>
+    <div id='InventoryDisplay'>
       <div id="recipeListState">
         <div>{recipeListState}</div>
         <button onClick={clearCart}>Clear</button>
       </div>
       <ul id='inventoryList'>
         {cart.length ? newCart:  
-          <div className='barInventory'>
+          <div>
             Inventory Empty
           </div>}
       </ul>
     </div>
   );
 };
-
-export default Inventory;

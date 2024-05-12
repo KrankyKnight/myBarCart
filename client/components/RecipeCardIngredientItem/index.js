@@ -1,0 +1,1 @@
+export { RecipeCardIngredientItem } from './RecipeCardIngredientItem.jsx'

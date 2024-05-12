@@ -4,13 +4,13 @@
 
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Inventory from '../containers/Inventory'
-import Options from '../containers/Options';
-import APIDisplay from '../containers/APIDisplay';
+import { InventoryDisplay } from '../components/InventoryDisplay'
+import { OptionsDisplay } from '../components/OptionsDisplay';
+import { MainDisplay } from '../components/MainDisplay';
 import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk, fetchRecipesThunk } from '../actions';
 import './styles.scss';
 
-const MainDisplay = () => {
+const App = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.bar.cart);
   const viewMode = useSelector((state) => state.bar.viewMode);
@@ -35,12 +35,12 @@ const MainDisplay = () => {
   }, [recipeList])
 
   return(
-    <div id='MainDisplay' className='displayGrid'>
-      <Options key='Options'/>
-      <Inventory key='Inventory'/>
-      <APIDisplay key='APIDisplay'/>
+    <div id='app'>
+      <OptionsDisplay key='OptionsDisplay'/>
+      <InventoryDisplay key='InventoryDisplay'/>
+      <MainDisplay key='MainDisplay'/>
     </div>
   );
 };
 
-export default MainDisplay;
+export default App;

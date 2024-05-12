@@ -1,5 +1,6 @@
 const mysql = require('mysql2/promise');
-require('dotenv').config({path: ['.env.local']});
+const envPath = process.env.NODE_ENV === 'production' ? '.env.local' : '.env.local.test'
+require('dotenv').config({path: [envPath]});
 
 const pool = mysql.createPool({
   connectionLimit: 10,

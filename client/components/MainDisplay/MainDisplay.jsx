@@ -2,14 +2,13 @@
  * @description display ingredients or recipes after a lookup
  */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import RecipeCard from '../../components/RecipeCard';
-import IngredientLookupCard from '../../components/IngredientLookupCard';
+import RecipeCard from '../RecipeCard';
+import { IngredientItem } from '../IngredientItem';
 import './styles.scss';
 
-//display must be rendered based on a state
-const APIDisplay = () => {
+export const MainDisplay = () => {
 
   const ingredientList = useSelector((state) => state.bar.ingredientList);
   const filteredIngredientList = useSelector((state) => state.bar.filteredIngredientList);
@@ -24,13 +23,13 @@ const APIDisplay = () => {
     if(searchText.length === 0) {
       for(const ingredient of ingredientList) {
         ingredientCount++;
-        viewOutput.push(<IngredientLookupCard key={`ingredient${ingredientCount}`} ingredientID={ingredient.id} displayName={ingredient.displayName}/>)
+        viewOutput.push(<IngredientItem key={`ingredient${ingredientCount}`} ingredientID={ingredient.id} displayName={ingredient.displayName}/>)
       };
     }
     else {
       for(const ingredient of filteredIngredientList) {
         ingredientCount++;
-        viewOutput.push(<IngredientLookupCard key={`ingredient${ingredientCount}`} ingredientID={ingredient.id} displayName={ingredient.displayName}/>)
+        viewOutput.push(<IngredientItem key={`ingredient${ingredientCount}`} ingredientID={ingredient.id} displayName={ingredient.displayName}/>)
       };
     };
   };
@@ -47,7 +46,7 @@ const APIDisplay = () => {
   };
 
   return(
-    <div id='APIDisplay' className={`api ${viewMode}`}>
+    <div id='MainDisplay' className={`api ${viewMode}`}>
       {
         viewMode === 'none' ? 
           <p>
@@ -83,5 +82,3 @@ const APIDisplay = () => {
     </div>
   );
 };
-
-export default APIDisplay;

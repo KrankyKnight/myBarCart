@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import Ingredient from '../Ingredient/Ingredient.jsx';
+import { RecipeCardIngredientItem } from '../RecipeCardIngredientItem/RecipeCardIngredientItem.jsx';
 import './styles.scss';
 
 const RecipeCard = ({ name, content, glass, instructions, image, ingredients }) => {
@@ -12,7 +12,7 @@ const RecipeCard = ({ name, content, glass, instructions, image, ingredients }) 
   let count = 0;
   for (let ingredient of ingredients) {
     count++;
-    listOfIngredients.push(<Ingredient key={`ingredient${name}${count}`} ingredient={ingredient}/>)
+    listOfIngredients.push(<RecipeCardIngredientItem key={`ingredient${name}${count}`} ingredient={ingredient}/>)
   }
 
   return(
