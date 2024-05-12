@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { updateRecipeListState, addItemToCart } from '../../actions';
 import './styles.scss';
 
-const IngredientLookupCard = ({ingredientID, displayName}) => {
+export const IngredientItem = ({ingredientID, displayName}) => {
 
   const dispatch = useDispatch();
 
@@ -15,13 +15,11 @@ const IngredientLookupCard = ({ingredientID, displayName}) => {
     event.preventDefault();
     dispatch(addItemToCart({id: event.target.id, displayName: event.target.textContent}));
     dispatch(updateRecipeListState());
-  }
+  };
 
   return(
     <button id={ingredientID} className='ingredientCard' onClick={addToCart}>
       {displayName}
     </button>
   )
-}
-
-export default IngredientLookupCard;
+};

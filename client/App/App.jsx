@@ -4,8 +4,8 @@
 
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Inventory from '../components/Inventory'
-import Options from '../components/Options';
+import { InventoryDisplay } from '../components/InventoryDisplay'
+import { OptionsDisplay } from '../components/OptionsDisplay';
 import { MainDisplay } from '../components/MainDisplay';
 import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk, fetchRecipesThunk } from '../actions';
 import './styles.scss';
@@ -36,8 +36,8 @@ const App = () => {
 
   return(
     <div id='app'>
-      <Options key='Options'/>
-      <Inventory key='Inventory'/>
+      <OptionsDisplay key='OptionsDisplay'/>
+      <InventoryDisplay key='InventoryDisplay'/>
       <MainDisplay key='MainDisplay'/>
     </div>
   );

@@ -5,7 +5,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import RecipeCard from '../RecipeCard';
-import IngredientLookupCard from '../IngredientLookupCard';
+import { IngredientItem } from '../IngredientItem';
 import './styles.scss';
 
 export const MainDisplay = () => {
@@ -23,13 +23,13 @@ export const MainDisplay = () => {
     if(searchText.length === 0) {
       for(const ingredient of ingredientList) {
         ingredientCount++;
-        viewOutput.push(<IngredientLookupCard key={`ingredient${ingredientCount}`} ingredientID={ingredient.id} displayName={ingredient.displayName}/>)
+        viewOutput.push(<IngredientItem key={`ingredient${ingredientCount}`} ingredientID={ingredient.id} displayName={ingredient.displayName}/>)
       };
     }
     else {
       for(const ingredient of filteredIngredientList) {
         ingredientCount++;
-        viewOutput.push(<IngredientLookupCard key={`ingredient${ingredientCount}`} ingredientID={ingredient.id} displayName={ingredient.displayName}/>)
+        viewOutput.push(<IngredientItem key={`ingredient${ingredientCount}`} ingredientID={ingredient.id} displayName={ingredient.displayName}/>)
       };
     };
   };

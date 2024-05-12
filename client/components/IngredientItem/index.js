@@ -1,0 +1,1 @@
+export { IngredientItem } from './IngredientItem.jsx';

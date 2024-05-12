@@ -1,5 +1,5 @@
 /**
- * @description API search options
+ * @description API search OptionsDisplay
  */
 
 import React, { useEffect} from 'react';
@@ -7,7 +7,7 @@ import { generateIngredientListThunk, setViewIngredientsList, fetchRecipesThunk,
 import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
 
-const Options = () => {
+export const OptionsDisplay = () => {
   
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.bar.recipes);
@@ -37,7 +37,7 @@ const Options = () => {
   }, [dbStatus]);
 
   return(
-    <div id='Options' className='input'>
+    <div id='OptionsDisplay' className='input'>
       <div id="db-status" className={`status ${dbStatus}`}>DB Status: {dbStatus}</div>
       <button onClick={dispatchPendingRecipes}>Generate Recipes</button>
       <input 
@@ -50,5 +50,3 @@ const Options = () => {
     </div>
   )
 }
-
-export default Options;
