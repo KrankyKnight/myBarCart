@@ -10,7 +10,7 @@ import APIDisplay from '../containers/APIDisplay';
 import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk, fetchRecipesThunk } from '../actions';
 import './styles.scss';
 
-const MainDisplay = () => {
+const App = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.bar.cart);
   const viewMode = useSelector((state) => state.bar.viewMode);
@@ -35,7 +35,7 @@ const MainDisplay = () => {
   }, [recipeList])
 
   return(
-    <div id='MainDisplay' className='displayGrid'>
+    <div id='app'>
       <Options key='Options'/>
       <Inventory key='Inventory'/>
       <APIDisplay key='APIDisplay'/>
