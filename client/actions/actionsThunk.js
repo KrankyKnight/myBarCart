@@ -25,7 +25,7 @@ export const updateRecipeListCallThunk = () => {
     const cart = getState().bar.cart;
     if(!cart.length) dispatch(action.updateRecipeList([]));
     else {
-      await fetch('https://mybarcartdb.com/recipes/getRecipeList', {
+      await fetch('http://localhost:3000/recipes/getRecipeList', {
         method: "POST",
         headers: {"content-type": "application/json"},
         body: JSON.stringify({recipeIdArray: cart}),
@@ -52,7 +52,7 @@ export const generateIngredientListThunk = () => {
   return async (dispatch, getState) => {
     const ingredientList = getState().bar.ingredientList;
     if(!ingredientList.length) {
-      fetch('https://mybarcartdb.com/ingredients')
+      fetch('http://localhost:3000/ingredients')
         .then(data => data.json())
         .then(data => {
           if(data.err) console.error(data.err);
@@ -66,7 +66,7 @@ export const generateIngredientListThunk = () => {
 export const fetchRecipesThunk = () => {
   return async (dispatch, getState) => {
     const recipeList = getState().bar.recipeList;
-    fetch('https://mybarcartdb.com/recipes/getRecipes', {
+    fetch('http://localhost:3000/recipes/getRecipes', {
       method: "POST",
       headers: {
         "content-type": "application/json"
