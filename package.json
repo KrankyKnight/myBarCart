@@ -8,6 +8,10 @@
     "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --hot --progress --color\" \"cross-env NODE_ENV=development nodemon ./server/server.js\"",
     "lint": "esling client/"
   },
+  "engines": {
+    "npm": "9.8.1",
+    "node": "18.18.0"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
