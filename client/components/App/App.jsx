@@ -4,10 +4,10 @@
 
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { InventoryDisplay } from '../components/InventoryDisplay'
-import { OptionsDisplay } from '../components/OptionsDisplay';
-import { MainDisplay } from '../components/MainDisplay';
-import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk, fetchRecipesThunk } from '../actions';
+import { InventoryDisplay } from '../InventoryDisplay'
+import { OptionsDisplay } from '../OptionsDisplay';
+import { MainDisplay } from '../MainDisplay';
+import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk, fetchRecipesThunk } from '../../actions';
 import './styles.scss';
 
 const App = () => {
