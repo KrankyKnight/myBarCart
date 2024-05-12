@@ -5,6 +5,7 @@
 import React from 'react';
 import { removeItemFromCart } from '../../actions';
 import { useDispatch } from 'react-redux';
+import './styles.scss';
 
 const InventoryItem = ({name}) => {
 
