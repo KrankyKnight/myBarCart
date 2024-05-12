@@ -8,7 +8,6 @@ import { updateRecipeListState, addItemToCart } from '../../actions';
 import './styles.scss';
 
 export const IngredientItem = ({ingredientID, displayName}) => {
-
   const dispatch = useDispatch();
 
   const addToCart = (event) => {

@@ -34,7 +34,7 @@ const barReducer = createReducer(initialState, (builder) => {
       else state.cart = {length:0};
     })
 
-    .addCase(actions.emptyCart, (state, action) => {
+    .addCase(actions.emptyCart, (state) => {
       state.cart = {length: 0};
     })
 
