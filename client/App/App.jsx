@@ -12,7 +12,6 @@ import './styles.scss';
 
 const App = () => {
   const dispatch = useDispatch();
-  const newWord = "test";
   const cart = useSelector((state) => state.bar.cart);
   const viewMode = useSelector((state) => state.bar.viewMode);
   const recipeList = useSelector((state) => state.bar.recipeList);
