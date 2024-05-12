@@ -4,9 +4,9 @@
 
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Inventory from '../containers/Inventory'
-import Options from '../containers/Options';
-import APIDisplay from '../containers/APIDisplay';
+import Inventory from '../components/Inventory'
+import Options from '../components/Options';
+import { MainDisplay } from '../components/MainDisplay';
 import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk, fetchRecipesThunk } from '../actions';
 import './styles.scss';
 
@@ -38,9 +38,9 @@ const App = () => {
     <div id='app'>
       <Options key='Options'/>
       <Inventory key='Inventory'/>
-      <APIDisplay key='APIDisplay'/>
+      <MainDisplay key='MainDisplay'/>
     </div>
   );
 };
 
-export default MainDisplay;
+export default App;
