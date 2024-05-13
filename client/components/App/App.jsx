@@ -5,7 +5,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { InventoryDisplay } from '../InventoryDisplay'
-import { OptionsDisplay } from '../OptionsDisplay';
 import { MainDisplay } from '../MainDisplay';
 import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk, fetchRecipesThunk } from '../../actions';
 import './styles.scss';
@@ -35,8 +34,7 @@ const App = () => {
   }, [recipeList])
 
   return(
-    <div id='app'>
-      <OptionsDisplay key='OptionsDisplay'/>
+    <div id='App'>
       <InventoryDisplay key='InventoryDisplay'/>
       <MainDisplay key='MainDisplay'/>
     </div>

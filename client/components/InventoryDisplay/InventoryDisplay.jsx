@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import InventoryItem from '../InventoryItem';
 import './styles.scss';
 import { emptyCart } from '../../actions';
+import { OptionsDisplay } from '../OptionsDisplay';
 
 export const InventoryDisplay = () => {
 
@@ -32,9 +33,10 @@ export const InventoryDisplay = () => {
 
   return(
     <div id='InventoryDisplay'>
+      <OptionsDisplay key="OptionsDisplay"/>
       <div id="recipeListState">
         <div>{recipeListState}</div>
-        <button onClick={clearCart}>Clear</button>
+        <button onClick={clearCart}>Clear Ingredients</button>
       </div>
       <ul id='inventoryList'>
         {cart.length ? newCart:  

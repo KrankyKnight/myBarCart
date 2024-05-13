@@ -1,1 +1,14 @@
 @import '../../scss/styles.scss';
+
+body {
+  background-color: $mainBackground;
+  background: url('../../assets/images/bluespace-1.jpeg') lightgray 50% / cover no-repeat;
+}
+
+#App {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
