@@ -25,6 +25,10 @@ button.inventory {
   text-align: center;
 }
 
+button.inventory:hover {
+  background: rgba(255, 255, 255, .2);
+}
+
 .ingredient {
   padding: 4px 16px;
   border-radius: 24px;
@@ -38,6 +42,25 @@ button.inventory {
   line-height: normal;
 }
 
+.ingredient:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 44px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.45);
 }
