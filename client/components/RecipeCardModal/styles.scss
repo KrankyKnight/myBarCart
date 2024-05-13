@@ -8,7 +8,8 @@
   z-index: 10;
   display: flex;
   width: 330px;
-  height: auto;
+  max-height: auto;
+  min-height: 512px;
   max-height: 80%;
   flex-direction: column;
   align-items: center;
@@ -28,11 +29,11 @@
     box-sizing: border-box;
     width: 330px;
     height: auto;
+    max-height: 50%;
     padding: 18px 36px 24px 36px;
     margin-bottom: 24px;
     flex-direction: column;
     align-items: flex-start;
-    flex-shrink: 0;
     overflow-y: auto;
     h3 {
       color: rgba(255, 255, 255, 0.90);
