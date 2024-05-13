@@ -46,7 +46,7 @@ export const MainDisplay = () => {
   };
 
   return(
-    <div id='MainDisplay' className={`api ${viewMode}`}>
+    <div id='MainDisplay' className={`api ${viewMode} ${`recipe${recipes === "pending" ? recipes : recipes.length}`}`}>
       {
         viewMode === 'none' ? 
           <p className='blurb'>
