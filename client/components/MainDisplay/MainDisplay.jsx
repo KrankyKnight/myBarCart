@@ -10,8 +10,6 @@ import './styles.scss';
 
 export const MainDisplay = () => {
 
-  console.log('rendering');
-
   const ingredientList = useSelector((state) => state.bar.ingredientList);
   const filteredIngredientList = useSelector((state) => state.bar.filteredIngredientList);
   const searchText = useSelector((state) => state.bar.searchText);
