@@ -19,3 +19,5 @@ export const fetchDbStatusRequest = createAction('FETCH_DB_STATUS_REQUEST');
 export const fetchDbStatusSuccess = createAction('FETCH_DB_STATUS_SUCCESS');
 export const fetchDbStatusFailure = createAction('FETCH_DB_STATUS_FAILURE');
 export const serverError = createAction('SERVER_ERROR');
+export const displayModal = createAction('DISPLAY_MODAL');
+export const removeModal = createAction('REMOVE_MODAL');

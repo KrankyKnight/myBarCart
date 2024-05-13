@@ -1,6 +1,11 @@
 @import '../../scss/styles.scss';
 
-.recipeCard {
+.recipe-card.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
   display: flex;
   width: 220px;
   height: 341px;
@@ -17,7 +22,7 @@
     height: 180px;
     border-radius: 12px;
   }
-  .informationBox {
+  .information-box {
     display: flex;
     box-sizing: border-box;
     width: 220px;
@@ -65,10 +70,10 @@
       line-height: normal;
     }
   }
-  .informationBox::-webkit-scrollbar {
+  .information-box::-webkit-scrollbar {
     width: 0px;
   }
-  .cardDecoration {
+  .card-decoration {
     position: relative;
     width: 176px;
     height: 1px;
@@ -80,6 +85,6 @@
   }
 }
 
-.recipeCard:hover {
+.recipe-card:hover {
   background: rgba(255, 255, 255, 0.25);
 }
