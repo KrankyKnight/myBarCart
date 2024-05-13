@@ -80,7 +80,7 @@ export const InventoryDisplay = () => {
       <div id='totalRecipes'>{recipeListState}</div>
       <ul id="inventoryList" className={`cartLength${cart.length}`}>
         {cart.length ? newCart:  
-          <div>
+          <div id='emptyListText'>
             Inventory Empty
           </div>}
       </ul>

@@ -49,9 +49,9 @@ export const MainDisplay = () => {
     <div id='MainDisplay' className={`api ${viewMode}`}>
       {
         viewMode === 'none' ? 
-          <p>
+          <p className='blurb'>
             <h4>Welcome to myBarCart</h4> 
-            <div>This app brought to you thanks to the wonderful devs at <em>thecocktailDB</em></div>
+            <div>This app is brought to you thanks to the wonderful devs at <em>thecocktailDB</em></div>
             <div>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a></div>
             <div>And support them on their patreon at <a href='https://www.patreon.com/thedatadb'>www.patreon.com/thedatadb</a></div>
           </p>
