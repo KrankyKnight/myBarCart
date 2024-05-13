@@ -2,13 +2,15 @@
  * @description display ingredients or recipes after a lookup
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import RecipeCard from '../RecipeCard';
+import { RecipeCard } from '../RecipeCard';
 import { IngredientItem } from '../IngredientItem';
 import './styles.scss';
 
 export const MainDisplay = () => {
+
+  console.log('rendering');
 
   const ingredientList = useSelector((state) => state.bar.ingredientList);
   const filteredIngredientList = useSelector((state) => state.bar.filteredIngredientList);
@@ -46,12 +48,12 @@ export const MainDisplay = () => {
   };
 
   return(
-    <div id='MainDisplay' className={`api ${viewMode}`}>
+    <div id='MainDisplay' className={`api ${viewMode} ${`recipe${recipes === "pending" ? recipes : recipes.length}`}`}>
       {
         viewMode === 'none' ? 
-          <p>
+          <p className='blurb'>
             <h4>Welcome to myBarCart</h4> 
-            <div>This app brought to you thanks to the wonderful devs at <em>thecocktailDB</em></div>
+            <div>This app is brought to you thanks to the wonderful devs at <em>thecocktailDB</em></div>
             <div>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a></div>
             <div>And support them on their patreon at <a href='https://www.patreon.com/thedatadb'>www.patreon.com/thedatadb</a></div>
           </p>

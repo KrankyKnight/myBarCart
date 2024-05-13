@@ -4,7 +4,7 @@ import './styles.scss';
 export const RecipeCardIngredientItem = ({ingredient}) => {
   return (
     <div>
-      {ingredient}
+      &#x2022; {ingredient}
     </div>
   )
 };

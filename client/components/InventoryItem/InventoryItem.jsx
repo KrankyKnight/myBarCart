@@ -17,8 +17,8 @@ const InventoryItem = ({name}) => {
   };
 
   return(
-    <li className='barCard'>
-      <button id={name} onClick={removeItem}>{name}</button>
+    <li className='inventoryItem'>
+      <button className='ingredient' id={name} onClick={removeItem}>{name}</button>
     </li>
   )
 }

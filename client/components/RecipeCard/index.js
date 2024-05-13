@@ -1,1 +1,1 @@
-export { default } from './RecipeCard.jsx';
+export { RecipeCard } from './RecipeCard.jsx';

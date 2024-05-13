@@ -1,1 +1,85 @@
 @import '../../scss/styles.scss';
+
+#MainDisplay {
+  display: flex;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+  padding: 45px 40px 32px 36px;
+  border-radius: 30px 0px 0px 30px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  .blurb {
+    color: rgba(255, 255, 255, 0.80);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: 'inter', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 30px;
+    background-color: rgba($mainBackground, .8);
+    width: 80%;
+    padding: 10px;
+  }
+  p {
+    h4 {
+      text-decoration: underline;
+      padding-bottom: 10px;
+    }
+    div {
+      margin: 10px;
+      em {
+        font-weight: bold;
+      }
+      a {
+        color: blue;
+      }
+      a:hover {
+        color: purple;
+      }
+    }
+  }
+}
+
+#MainDisplay.ingredients {
+  padding: 24px;
+  justify-content: center;
+  align-items: baseline;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex-wrap: wrap;
+}
+
+#MainDisplay.recipes {
+  padding: 24px;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 24px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-wrap: wrap;
+}
+
+#MainDisplay.recipes.recipe0,
+#MainDisplay.recipes.recipepending {
+  padding: 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-wrap: wrap;
+}
+
+#MainDisplay::-webkit-scrollbar-track {
+  border-radius: 30px 0px 0px 30px;
+}
+
+#MainDisplay::-webkit-scrollbar-thumb {
+  border-radius: 30px 0px 0px 30px;
+}

@@ -11,6 +11,7 @@ const initialState = {
   recipes: [],
   cart: {},
   dbStatus: 'Offline',
+  displayModal: false,
 };
 
 const barReducer = createReducer(initialState, (builder) => {
@@ -97,6 +98,14 @@ const barReducer = createReducer(initialState, (builder) => {
 
     .addCase(actions.fetchDbStatusFailure, (state) => {
       state.dbStatus = 'Offline';
+    })
+
+    .addCase(actions.displayModal, (state, action) => {
+      state.displayModal = action.payload;
+    })
+
+    .addCase(actions.removeModal, (state) => {
+      state.displayModal = false;
     })
 
     .addDefaultCase((state) => state);

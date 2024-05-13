@@ -4,10 +4,10 @@
 
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { InventoryDisplay } from '../components/InventoryDisplay'
-import { OptionsDisplay } from '../components/OptionsDisplay';
-import { MainDisplay } from '../components/MainDisplay';
-import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk, fetchRecipesThunk } from '../actions';
+import { InventoryDisplay } from '../InventoryDisplay'
+import { MainDisplay } from '../MainDisplay';
+import { RecipeCardModal } from '../RecipeCardModal';
+import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk, fetchRecipesThunk } from '../../actions';
 import './styles.scss';
 
 const App = () => {
@@ -15,6 +15,7 @@ const App = () => {
   const cart = useSelector((state) => state.bar.cart);
   const viewMode = useSelector((state) => state.bar.viewMode);
   const recipeList = useSelector((state) => state.bar.recipeList);
+  const modalStatus = useSelector((state) => state.bar.displayModal)
   
   const addToSessionStorage = useCallback(() => {
     const dataToStore = JSON.stringify(cart);
@@ -35,10 +36,10 @@ const App = () => {
   }, [recipeList])
 
   return(
-    <div id='app'>
-      <OptionsDisplay key='OptionsDisplay'/>
+    <div id='App'>
       <InventoryDisplay key='InventoryDisplay'/>
       <MainDisplay key='MainDisplay'/>
+      {modalStatus !== false ? <RecipeCardModal key='RecipeCardModal' info={modalStatus}/> : <></>}
     </div>
   );
 };
