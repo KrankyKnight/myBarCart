@@ -18,17 +18,20 @@ const RecipeCard = ({ name, content, glass, instructions, image, ingredients }) 
   return(
     <div className='recipeCard'>
       <img src={image} alt={`An image of the drink ${name}`} className='recipeImg'></img>
-      <h3>{name}</h3>
-      <p className='content'>{content}</p>
-      <p className='glass'>Served in a {glass}</p>
-      <ul>
-        <h4 className='ingredientLabel'>Instructions</h4>
-        <li className='ingredientsList'>{instructions}</li>
-      </ul>
-      <ul>
-        <h4 className='ingredientLabel'>Ingredients</h4>
-        <li className='ingredientsList'>{listOfIngredients}</li>
-      </ul>
+      <div className='informationBox'>
+        <h3>{name}</h3>
+        <p className='content'>{content}</p>
+        <p className='glass'>Served in a {glass}</p>
+        <ul>
+          <h4 className='ingredientLabel'>Instructions</h4>
+          <li className='ingredientsList'>{instructions}</li>
+        </ul>
+        <ul>
+          <h4 className='ingredientLabel'>Ingredients</h4>
+          <li className='ingredientsList'>{listOfIngredients}</li>
+        </ul>
+      </div>
+      <div className="cardDecoration">&nbsp;</div>
     </div>
   )
 }

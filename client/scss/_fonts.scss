@@ -1,4 +1,9 @@
 @font-face {
   font-family: 'inter';
-  src: url('../../assets/fonts/Inter-VariableFont_slnt\,wght.ttf') format('truetype-variations');
+  src: url('../../assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf') format('truetype-variations');
+}
+
+@font-face {
+  font-family: 'poppins';
+  src: url('../../assets/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
 }
