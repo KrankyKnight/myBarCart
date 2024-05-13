@@ -6,7 +6,6 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RecipeCard } from '../RecipeCard';
 import { IngredientItem } from '../IngredientItem';
-import { RecipeCardModal } from '../RecipeCardModal';
 import './styles.scss';
 
 export const MainDisplay = () => {
@@ -18,7 +17,6 @@ export const MainDisplay = () => {
   const searchText = useSelector((state) => state.bar.searchText);
   const viewMode = useSelector((state) => state.bar.viewMode);
   const recipes = useSelector((state) => state.bar.recipes);
-  const modalStatus = useSelector((state) => state.bar.displayModal)
 
   const viewOutput = [];
   let ingredientCount = 0;
@@ -48,10 +46,6 @@ export const MainDisplay = () => {
       recipeCards.push(<RecipeCard key={`recipe${recipeCount}`} id={id} name={name} content={content} glass={glass} instructions={instructions} image={image} ingredients={ingredients}/>)
     };
   };
-
-  useEffect(() => {
-    console.log('current status:', modalStatus);
-  }, [modalStatus])
 
   return(
     <div id='MainDisplay' className={`api ${viewMode} ${`recipe${recipes === "pending" ? recipes : recipes.length}`}`}>
@@ -87,7 +81,6 @@ export const MainDisplay = () => {
             <div className='info-text'>To the dev: Something is not right and good luck code man!</div>
           </div>
       }
-      {modalStatus !== false ? <RecipeCardModal key='RecipeCardModal' info={modalStatus}/> : <></>}
     </div>
   );
 };

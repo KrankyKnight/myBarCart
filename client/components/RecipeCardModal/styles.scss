@@ -7,28 +7,29 @@
   transform: translate(-50%, -50%);
   z-index: 10;
   display: flex;
-  width: 220px;
-  height: 341px;
+  width: 330px;
+  height: auto;
+  max-height: 80%;
   flex-direction: column;
   align-items: center;
   flex-shrink: 0;
-  border-radius: 12px;
+  border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25), 0px 4px 250px 0px rgba(0, 0, 0, 0.02) inset;
   backdrop-filter: blur(21px);
   img {
-    width: 220px;
-    height: 180px;
-    border-radius: 12px;
+    width: 330px;
+    height: 270px;
+    border-radius: 18px;
   }
   .information-box {
     display: flex;
     box-sizing: border-box;
-    width: 220px;
-    height: 145px;
-    padding: 12px 24px 16px 24px;
-    margin-bottom: 16px;
+    width: 330px;
+    height: auto;
+    padding: 18px 36px 24px 36px;
+    margin-bottom: 24px;
     flex-direction: column;
     align-items: flex-start;
     flex-shrink: 0;
@@ -37,7 +38,7 @@
       color: rgba(255, 255, 255, 0.90);
       font-feature-settings: 'clig' off, 'liga' off;
       font-family: 'poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-      font-size: 18px;
+      font-size: 27px;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
@@ -46,7 +47,7 @@
       color: rgba(255, 255, 255, 0.90);
       font-feature-settings: 'clig' off, 'liga' off;
       font-family: 'poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-      font-size: 14px;
+      font-size: 21px;
       font-style: normal;
       font-weight: 700;
       line-height: normal;
@@ -55,7 +56,7 @@
       color: rgba(255, 255, 255, 0.90);
       font-feature-settings: 'clig' off, 'liga' off;
       font-family: 'poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-      font-size: 12px;
+      font-size: 18px;
       font-style: italic;
       font-weight: 400;
       line-height: normal;
@@ -64,7 +65,7 @@
       color: rgba(255, 255, 255, 0.90);
       font-feature-settings: 'clig' off, 'liga' off;
       font-family: 'poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-      font-size: 12px;
+      font-size: 18px;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
@@ -75,16 +76,23 @@
   }
   .card-decoration {
     position: relative;
-    width: 176px;
-    height: 1px;
+    width: 264px;
+    height: 2px;
     background-color: #C4C4C4;
-    top: -10px;
-    border-radius: 30px;
+    top: -15px;
+    border-radius: 45px;
     padding: 0px;
     margin: 0px;
   }
 }
 
-.recipe-card:hover {
-  background: rgba(255, 255, 255, 0.25);
+.modal-overlay {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(black, .7);
+  z-index: 9;
 }
