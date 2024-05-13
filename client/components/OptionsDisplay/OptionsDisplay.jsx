@@ -38,15 +38,16 @@ export const OptionsDisplay = () => {
 
   return(
     <div id='OptionsDisplay' className='input'>
-      <div id="db-status" className={`status ${dbStatus}`}>DB Status: {dbStatus}</div>
-      <button onClick={dispatchPendingRecipes}>Generate Recipes</button>
+      <div id="db-status" className={`status ${dbStatus}`} hidden>DB Status: {dbStatus}</div>
       <input 
         name='ingredient' 
         type='text' 
         placeholder='search ingredient' 
-        className='field' id='lookupText' 
+        className='field inventory' id='lookupText' 
         onFocus={displayIngredients}
-        onChange={newSearchText}></input>
+        onChange={newSearchText}>
+      </input>
+      <button className='inventory' onClick={dispatchPendingRecipes}>Generate Recipes</button>
     </div>
   )
 }

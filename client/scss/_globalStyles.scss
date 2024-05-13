@@ -1,0 +1,33 @@
+button {
+  all: unset;
+}
+
+button.inventory {
+  width: 231px;
+  height: 42px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 0px 1px 2px rgba(255, 255, 255, 0.20);
+  color: rgba(255, 255, 255, 0.80);
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 5px 0px;
+  text-align: center;
+}
+
+.ingredient {
+  padding: 4px 16px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.80);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

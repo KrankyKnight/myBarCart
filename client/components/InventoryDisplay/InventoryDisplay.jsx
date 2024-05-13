@@ -35,8 +35,8 @@ export const InventoryDisplay = () => {
     <div id='InventoryDisplay'>
       <OptionsDisplay key="OptionsDisplay"/>
       <div id="recipeListState">
-        <div>{recipeListState}</div>
-        <button onClick={clearCart}>Clear Ingredients</button>
+        <button className='inventory' onClick={clearCart}>Clear Ingredients</button>
+        <div id='totalRecipes'>{recipeListState}</div>
       </div>
       <ul id='inventoryList'>
         {cart.length ? newCart:  

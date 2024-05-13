@@ -17,7 +17,7 @@ export const IngredientItem = ({ingredientID, displayName}) => {
   };
 
   return(
-    <button id={ingredientID} className='ingredientCard' onClick={addToCart}>
+    <button id={ingredientID} className='ingredient ingredientItem' onClick={addToCart}>
       {displayName}
     </button>
   )
