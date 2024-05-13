@@ -4,7 +4,6 @@ import { createRoot } from 'react-dom/client';
 
 import App from './components/App/index.js';
 import store from './store.js';
-import './scss/styles.scss';
 
 const domNode = document.getElementById('root')
 const root = createRoot(domNode);
