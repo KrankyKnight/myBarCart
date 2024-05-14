@@ -2,7 +2,6 @@ import globals from "globals";
 import pluginJs from "@eslint/js";
 import react from 'eslint-plugin-react';
 
-
 export default [
   {
     languageOptions: 
