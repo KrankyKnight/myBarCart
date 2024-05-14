@@ -2,7 +2,7 @@
  * @description display ingredients or recipes after a lookup
  */
 
-import React, { Fragment, useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { RecipeCard } from '../RecipeCard';
 import { IngredientItem } from '../IngredientItem';
