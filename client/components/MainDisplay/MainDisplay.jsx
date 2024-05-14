@@ -2,7 +2,7 @@
  * @description display ingredients or recipes after a lookup
  */
 
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RecipeCard } from '../RecipeCard';
 import { IngredientItem } from '../IngredientItem';
@@ -49,12 +49,24 @@ export const MainDisplay = () => {
     <div id='MainDisplay' className={`api ${viewMode} ${`recipe${recipes === "pending" ? recipes : recipes.length}`}`}>
       {
         viewMode === 'none' ? 
-          <p className='blurb'>
-            <h4>Welcome to myBarCart</h4> 
-            <div>This app is brought to you thanks to the wonderful devs at <em>thecocktailDB</em></div>
-            <div>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a></div>
-            <div>And support them on their patreon at <a href='https://www.patreon.com/thedatadb'>www.patreon.com/thedatadb</a></div>
-          </p>
+          <div className='intro-blurb'>
+            <p className='blurb'>
+              <h4>Welcome to myBarCart</h4> 
+              <div>This app is brought to you thanks to the wonderful devs at <em>thecocktailDB</em></div>
+              <div>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a></div>
+              <div>And support them on their patreon at <a href='https://www.patreon.com/thedatadb'>www.patreon.com/thedatadb</a></div>
+            </p>
+            <p className='blurb'>
+              <h4>How To Use</h4>
+              <div>MyBarCartDB's main focus is to see what you can make with what you have</div>
+              <ol id='tutorial'>
+                <li>1. Search for ingredients that you have by using the "Search Ingredient" field</li>
+                <li>2. Click on ingredients to add them to your inventory</li>
+                <li>3. Click "Generate Recipes" and see what you can make</li>
+              </ol>
+              <div>Enjoy!</div>
+            </p>
+          </div>
         : viewMode === 'ingredients' ? 
           <ul id='ingredientList'>
             {viewOutput}
