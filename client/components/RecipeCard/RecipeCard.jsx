@@ -2,9 +2,10 @@
  * @description Recipe cards
  */
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { RecipeCardIngredientItem } from '../RecipeCardIngredientItem/RecipeCardIngredientItem.jsx';
+import { ImageLoading } from '../ImageLoading/index.js';
 import { displayModal } from '../../actions/actions.js'
 import './styles.scss';
 
@@ -26,7 +27,9 @@ export const RecipeCard = (props) => {
 
   return(
     <div className='recipeCard' onClick={showModal}>
-      <img src={image} alt={`An image of the drink ${name}`} className='recipeImg'></img>
+      <Suspense fallback={<ImageLoading/>}>
+        <img src={image} alt={`An image of the drink ${name}`} className='recipeImg'></img>
+      </Suspense>
       <div className='informationBox'>
         <h3>{name}</h3>
         <p className='content'>{content}</p>
