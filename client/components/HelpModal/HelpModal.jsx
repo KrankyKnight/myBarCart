@@ -8,7 +8,8 @@ import './styles.scss';
 export const HelpModal = () => {
 
   return(
-    <div>
+    <div id='info-button'>
+      ?
     </div>
   );
 };

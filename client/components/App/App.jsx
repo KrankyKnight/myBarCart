@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { InventoryDisplay } from '../InventoryDisplay'
 import { MainDisplay } from '../MainDisplay';
 import { RecipeCardModal } from '../RecipeCardModal';
+import { HelpModal } from '../HelpModal';
 import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk, fetchRecipesThunk } from '../../actions';
 import './styles.scss';
 
@@ -37,6 +38,7 @@ const App = () => {
 
   return(
     <div id='App'>
+      <HelpModal/>
       <InventoryDisplay key='InventoryDisplay'/>
       <MainDisplay key='MainDisplay'/>
       {modalStatus !== false ? <RecipeCardModal key='RecipeCardModal' info={modalStatus}/> : <></>}
