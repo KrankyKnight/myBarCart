@@ -30,16 +30,16 @@ export const RecipeCardModal = ({ info }) => {
         <img src={image} alt={`An image of the drink ${name}`} className='recipe-img'></img>
         <div className='information-box'>
           <h3>{name}</h3>
-          <p className='content'>{content}</p>
           <p className='glass'>Served in a {glass}</p>
-          <ul>
-            <h4 className='ingredient-label'>Instructions</h4>
+          <p className='content'>{content}</p>
+          <h4 className='ingredient-label'>Instructions</h4>
+          <ol className='recipe-list'>
             <li className='ingredients-list'>{instructions}</li>
-          </ul>
-          <ul>
-            <h4 className='ingredient-label'>Ingredients</h4>
+          </ol>
+          <h4 className='ingredient-label'>Ingredients</h4>
+          <ol className='recipe-list'>
             <li className='ingredients-list'>{listOfIngredients}</li>
-          </ul>
+          </ol>
         </div>
         <div className="card-decoration">&nbsp;</div>
       </div>

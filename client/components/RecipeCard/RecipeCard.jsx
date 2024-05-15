@@ -28,18 +28,14 @@ export const RecipeCard = (props) => {
     <div className='recipeCard' onClick={showModal}>
       <img src={image} alt={`An image of the drink ${name}`} className='recipeImg'></img>
       <div className='informationBox'>
-        <h3>{name}</h3>
+        <h3 className='recipe-name'>{name}</h3>
         <p className='content'>{content}</p>
-        <p className='glass'>Served in a {glass}</p>
-        <ul>
-          <h4 className='ingredientLabel'>Instructions</h4>
-          <li className='ingredientsList'>{instructions}</li>
-        </ul>
-        <ul>
-          <h4 className='ingredientLabel'>Ingredients</h4>
+        <h4 className='ingredient-label'>Ingredients</h4>
+        <ol className='recipe-list'>
           <li className='ingredientsList'>{listOfIngredients}</li>
-        </ul>
+        </ol>
       </div>
+      <div className='click-info'>Click for full recipe</div>
       <div className="cardDecoration">&nbsp;</div>
     </div>
   )
