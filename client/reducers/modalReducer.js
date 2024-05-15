@@ -14,12 +14,12 @@ const modalReducer = createReducer(initialState, (builder) => {
       state.displayModal = action.payload;
     })
 
-    .addCase(actions.modalOff, (state, action) => {
+    .addCase(actions.modalOff, (state) => {
       state.displayModal = false;
     })
 
-    .addCase(actions.helpModalPageChange, (state, action) => {
-
+    .addCase(actions.changeHelpModalPage, (state, action) => {
+      state.helpModalPage = action.payload;
     })
 
     .addCase(actions.setRecipeModal, (state, action) => {

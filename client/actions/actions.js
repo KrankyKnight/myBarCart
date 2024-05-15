@@ -24,5 +24,5 @@ export const removeModal = createAction('REMOVE_MODAL');
 
 export const modalOn = createAction('MODAL_ON');
 export const modalOff = createAction('MODAL_OFF');
-export const helpModalPageChange =  createAction('HELP_MODAL_PAGE_CHANGE');
+export const changeHelpModalPage =  createAction('CHANGE_HELP_MODAL_PAGE');
 export const setRecipeModal = createAction('SET_RECIPE_MODAL');

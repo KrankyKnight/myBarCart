@@ -90,7 +90,10 @@
     }
   }
   .information-box::-webkit-scrollbar {
-    width: 0px;
+    width: 8px;
+  }
+  .information-box::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.40);
   }
   .card-decoration {
     position: relative;
