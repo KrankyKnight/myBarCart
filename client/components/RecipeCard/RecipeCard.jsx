@@ -5,12 +5,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { RecipeCardIngredientItem } from '../RecipeCardIngredientItem/RecipeCardIngredientItem.jsx';
-import { displayModal } from '../../actions/actions.js'
+import { modalOn, setRecipeModal } from '../../actions/actions.js'
 import './styles.scss';
 
 export const RecipeCard = (props) => {
 
-  const { name, content, glass, instructions, image, ingredients } = props;
+  const { name, content, image, ingredients } = props;
   const dispatch = useDispatch();
 
   const listOfIngredients = [];
@@ -21,7 +21,8 @@ export const RecipeCard = (props) => {
   }
 
   const showModal = () => {
-    dispatch(displayModal(props));
+    dispatch(modalOn('recipe'));
+    dispatch(setRecipeModal(props));
   }
 
   return(

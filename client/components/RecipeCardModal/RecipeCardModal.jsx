@@ -5,7 +5,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { RecipeCardIngredientItem } from '../RecipeCardIngredientItem/RecipeCardIngredientItem.jsx';
-import { removeModal } from '../../actions/actions.js'
+import { modalOff, setRecipeModal } from '../../actions/actions.js'
 import './styles.scss';
 
 export const RecipeCardModal = ({ info }) => {
@@ -21,7 +21,8 @@ export const RecipeCardModal = ({ info }) => {
   }
 
   const hideModal = () => {
-    dispatch(removeModal());
+    dispatch(modalOff());
+    dispatch(setRecipeModal({}));
   }
 
   return(

@@ -16,7 +16,8 @@ const App = () => {
   const cart = useSelector((state) => state.bar.cart);
   const viewMode = useSelector((state) => state.bar.viewMode);
   const recipeList = useSelector((state) => state.bar.recipeList);
-  const modalStatus = useSelector((state) => state.bar.displayModal)
+  const modalStatus = useSelector((state) => state.modal.displayModal);
+  const modalInformation = useSelector((state) => state.modal.recipeModal);
   
   const addToSessionStorage = useCallback(() => {
     const dataToStore = JSON.stringify(cart);
@@ -41,7 +42,7 @@ const App = () => {
       <HelpModal/>
       <InventoryDisplay key='InventoryDisplay'/>
       <MainDisplay key='MainDisplay'/>
-      {modalStatus !== false ? <RecipeCardModal key='RecipeCardModal' info={modalStatus}/> : <></>}
+      {modalStatus === 'recipe' ? <RecipeCardModal key='RecipeCardModal' info={modalInformation}/> : <></>}
     </div>
   );
 };

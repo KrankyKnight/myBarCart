@@ -11,7 +11,6 @@ const initialState = {
   recipes: [],
   cart: {},
   dbStatus: 'Offline',
-  displayModal: false,
 };
 
 const barReducer = createReducer(initialState, (builder) => {
