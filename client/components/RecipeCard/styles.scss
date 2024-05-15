@@ -28,7 +28,7 @@
     align-items: center;
     overflow-y: auto;
     .recipe-name {
-      color: rgba(255, 255, 255, 0.90);
+      color: $standardFontColor;
       font-feature-settings: 'clig' off, 'liga' off;
       font-family: 'poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       font-size: 18px;
@@ -38,7 +38,7 @@
       line-height: 20px;
     }
     p.content {
-      color: rgba(255, 255, 255, 0.90);
+      color: $standardFontColor;
       font-feature-settings: 'clig' off, 'liga' off;
       font-family: 'poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       font-size: 27px;
@@ -47,7 +47,7 @@
       line-height: normal;
     }
     h4 {
-      color: rgba(255, 255, 255, 0.90);
+      color: $standardFontColor;
       font-feature-settings: 'clig' off, 'liga' off;
       font-family: 'poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       font-size: 14px;
@@ -59,7 +59,7 @@
       padding: 4px 0px;
     }
     .glass {
-      color: rgba(255, 255, 255, 0.90);
+      color: $standardFontColor;
       font-feature-settings: 'clig' off, 'liga' off;
       font-family: 'poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       font-size: 12px;
@@ -70,7 +70,7 @@
     ol.recipe-list {
       width: 100%;
       li {
-        color: rgba(255, 255, 255, 0.90);
+        color: $standardFontColor;
         font-feature-settings: 'clig' off, 'liga' off;
         font-family: 'poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         font-size: 12px;
@@ -89,7 +89,7 @@
   }
   .click-info {
     position: relative;
-    color: rgba(255, 255, 255, 0.90);
+    color: $standardFontColor;
     font-style: italic;
     font-size: 12px;
     top: -12px;
