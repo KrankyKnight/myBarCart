@@ -8,6 +8,7 @@ import { InventoryDisplay } from '../InventoryDisplay'
 import { MainDisplay } from '../MainDisplay';
 import { RecipeCardModal } from '../RecipeCardModal';
 import { HelpModalButton } from '../HelpModalButton';
+import { HelpModal } from '../HelpModal';
 import { updateRecipeListState, checkLocalStorage, fetchDbStatusThunk, updateRecipeListCallThunk, fetchRecipesThunk } from '../../actions';
 import './styles.scss';
 
@@ -40,6 +41,7 @@ const App = () => {
   return(
     <div id='App'>
       <HelpModalButton/>
+      {modalStatus === 'help' ? <HelpModal key='HelpModal'/> : <></>}
       <InventoryDisplay key='InventoryDisplay'/>
       <MainDisplay key='MainDisplay'/>
       {modalStatus === 'recipe' ? <RecipeCardModal key='RecipeCardModal' info={modalInformation}/> : <></>}

@@ -1,0 +1,55 @@
+@import '../../scss/styles.scss';
+
+.info-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.blurb {
+  color: rgba(255, 255, 255, 0.80);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: 'inter', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 30px;
+  background-color: rgba($mainBackground, .8);
+  width: 80%;
+  padding: 10px;
+}
+
+p {
+  h4 {
+    text-decoration: underline;
+    padding-bottom: 10px;
+  }
+  div {
+    margin: 10px;
+    em {
+      font-weight: bold;
+    }
+    a {
+      color: blue;
+    }
+    a:hover {
+      color: purple;
+    }
+  }
+}
+
+.modal-overlay {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(black, .7);
+  z-index: 9;
+}

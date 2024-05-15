@@ -12,12 +12,15 @@ export const HelpModalButton = () => {
   const dispatch = useDispatch();
 
   const openHelpModal = () => {
+    console.log('dispatching');
     dispatch(modalOn('help'));
     dispatch(changeHelpModalPage(0));
   };
 
   return(
-    <div id='info-button' onClick={openHelpModal}>
+    <div 
+      id='info-button' 
+      onClick={openHelpModal}>
       ?
     </div>
   );

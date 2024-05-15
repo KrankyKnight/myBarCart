@@ -15,4 +15,8 @@
   font-family: 'inter', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
   line-height: 28px;
+  cursor: help;
+}
+#info-button:hover {
+  background: rgba(255, 255, 255, .2);
 }
