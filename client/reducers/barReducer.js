@@ -56,7 +56,7 @@ const barReducer = createReducer(initialState, (builder) => {
     
     .addCase(actions.updateSearchText, (state, action) => {
       state.searchText = action.payload;
-      const minSearch = state.searchText.replace(/\s*/, "");
+      const minSearch = state.searchText.replaceAll(/\s/g, '');
       const regex = new RegExp(minSearch, 'i');
       state.filteredIngredientList = state.ingredientList.filter(ingredient => regex.test(ingredient.lookupName))
     })
