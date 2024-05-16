@@ -43,6 +43,8 @@
     border-radius: 30px;
     background-color: rgba($mainBackground, .8);
     width: 80%;
+    min-width: 400px;
+    max-width: 600px;
     padding: 10px;
   }
   p {
@@ -56,10 +58,10 @@
         font-weight: bold;
       }
       a {
-        color: blue;
+        color: lightseagreen;
       }
       a:hover {
-        color: purple;
+        color: aqua;
       }
     }
   }

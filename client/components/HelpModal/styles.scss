@@ -1,5 +1,11 @@
 @import '../../scss/styles.scss';
 
+@keyframes pulse-right {
+  0% {border-width: 25px 0 25px 50px;}
+  50% {border-width: 28px 0 28px 53px;}
+  100% {border-width: 25px 0 25px 50px;}
+}
+
 .info-modal {
   position: fixed;
   top: 50%;
@@ -8,42 +14,100 @@
   z-index: 10;
 }
 
-.blurb {
-  color: rgba(255, 255, 255, 0.80);
+.info-modal {
+  color: $standardFontColor;
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: 'inter', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   text-align: center;
   box-sizing: border-box;
+  border: solid 1px $standardFontColor;
   border-radius: 30px;
-  background-color: rgba($mainBackground, .8);
-  width: 80%;
+  background-color: rgba($mainBackground, 1);
+  width: 600px;
   padding: 10px;
-}
-
-p {
-  h4 {
+  p {
+    h4 {
+      text-decoration: underline;
+      padding-bottom: 10px;
+      font-size: 24px;
+    }
+    div {
+      margin: 10px;
+      em {
+        font-weight: bold;
+      }
+      a {
+        color: lightseagreen;
+      }
+      a:hover {
+        color: aqua;
+      }
+    }
+    div.tutorial-info {
+      line-height: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    ol#table-of-contents-list {
+      width: 40%;
+      margin: 10px 25%;
+      padding: 10px 5%;
+      border-top: solid 1px $standardFontColor;
+      border-bottom: solid 1px $standardFontColor;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      li.content-link {
+        font-size: 18px;
+      }
+      li.content-link:hover {
+        cursor: pointer;
+        color: aqua;
+      }
+    }
+  }
+  .table-of-contents {
+    font-size: 14px;
     text-decoration: underline;
-    padding-bottom: 10px;
   }
-  div {
-    margin: 10px;
-    em {
-      font-weight: bold;
-    }
-    a {
-      color: blue;
-    }
-    a:hover {
-      color: purple;
-    }
+  .table-of-contents:hover {
+    color: aqua;
+    cursor: pointer;
+  }
+  #arrow-left {
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-width: 25px 50px 25px 0;
+    border-color: transparent $standardFontColor transparent transparent;
+  }
+  #arrow-left:hover {
+    border-width: 28px 53px 28px 0;
+    border-color: transparent aqua transparent transparent;
+  }
+  #arrow-right {
+    position: absolute;
+    top: 50%;
+    left: 110%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-width: 25px 0 25px 50px;
+    border-color: transparent transparent transparent $standardFontColor;
+  }
+  #arrow-right:hover {
+    border-width: 28px 0 28px 53px;
+    border-color: transparent transparent transparent aqua;
   }
 }
 
-.modal-overlay {
+.help-modal-overlay {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

@@ -53,18 +53,8 @@ export const MainDisplay = () => {
             <p className='blurb'>
               <h4>Welcome to myBarCart</h4> 
               <div>This app is brought to you thanks to the wonderful devs at <em>thecocktailDB</em></div>
-              <div>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a></div>
-              <div>And support them on their patreon at <a href='https://www.patreon.com/thedatadb'>www.patreon.com/thedatadb</a></div>
-            </p>
-            <p className='blurb'>
-              <h4>How To Use</h4>
-              <div>MyBarCartDB's main focus is to see what you can make with what you have</div>
-              <ol id='tutorial'>
-                <li>1. Search for ingredients that you have by using the "Search Ingredient" field</li>
-                <li>2. Click on ingredients to add them to your inventory</li>
-                <li>3. Click "Generate Recipes" and see what you can make</li>
-              </ol>
-              <div>Enjoy!</div>
+              <div>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a> and support them on their patreon at <a href='https://www.patreon.com/thedatadb'>www.patreon.com/thedatadb</a></div>
+              <div>Click the ? in the top left for a tutorial on how to use the site</div>
             </p>
           </div>
         : viewMode === 'ingredients' ? 

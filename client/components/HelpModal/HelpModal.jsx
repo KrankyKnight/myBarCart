@@ -11,8 +11,42 @@ export const HelpModal = () => {
 
   const dispatch = useDispatch();
   const currentPage = useSelector((state) => state.modal.helpModalPage);
-  const pageMax = 3;
   let pageButtonClicked = false;
+  
+  const pages = [
+    <p>
+      <h4>Contents</h4>
+      <div className='tutorial-info'>- Use the arrows to navigate between tutorial pages -</div>
+      <div className='tutorial-info'>- Click a link below to jump directly to a page -</div>
+      <ol id='table-of-contents-list'>
+        <li className='content-link' onClick={() => setPage(1)}>1. Welcome to myBarCart</li>
+        <li className='content-link' onClick={() => setPage(2)}>2. The What</li>
+        <li className='content-link' onClick={() => setPage(3)}>3. The Why</li>
+        <li className='content-link' onClick={() => setPage(4)}>4. The How</li>
+      </ol>
+    </p>,
+    <p className='blurb'>
+      <h4>Welcome to myBarCart</h4>
+      <div>This app is brought to you thanks to the wonderful devs at <em>thecocktailDB</em></div>
+      <div>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a> and support them on their patreon at <a href='https://www.patreon.com/thedatadb'>www.patreon.com/thedatadb</a></div>
+    </p>,
+    <p className='blurb'>
+      <h4>The What</h4>
+      <div>myBarCart is a recipe generator.</div>
+      <div>Instead of looking up recipes, though, myBarCart shows you recipes based on the ingredients you have.</div>
+    </p>,
+    <p className='blurb'>
+      <h4>The Why</h4>
+      <div>Short answer: Sometime you don't want to go to the store.</div>
+      <div>myBarCart giver you the option to make something without needing to go out for ingredients!</div>
+    </p>,
+    <p className='blurb'>
+      <h4>The How</h4>
+      <div>The next few pages will tell you how to navigate the site, enjoy!</div>
+    </p>
+  ]
+
+  const pageMax = pages.length - 1;
 
   const pageForward = () => {
     if(!pageButtonClicked) {
@@ -30,30 +64,28 @@ export const HelpModal = () => {
     };
   };
 
+  const setPage = (page) => {
+    dispatch(changeHelpModalPage(page));
+  }
+
   const closeModal = () => {
     dispatch(modalOff());
     dispatch(changeHelpModalPage(0));
   };
 
-  const pages = [
-    <p className='blurb'>
-      <h4>How To Use</h4>
-      <div>MyBarCartDB's main focus is to see what you can make with what you have</div>
-      <ol id='tutorial'>
-        <li>1. Search for ingredients that you have by using the "Search Ingredient" field</li>
-        <li>2. Click on ingredients to add them to your inventory</li>
-        <li>3. Click "Generate Recipes" and see what you can make</li>
-      </ol>
-      <div>Enjoy!</div>
-    </p>
-  ]
-
   return(
     <>
       <div className={`info-modal ${currentPage}`}>
         {pages[currentPage]}
+        {currentPage === 0 ? <></> : <a className='table-of-contents' onClick={() => setPage(0)}>Table of Contents</a>}
+        <div id="arrow-left" 
+          className="page-arrow"
+          onClick={pageBack}></div>
+        <div id="arrow-right" 
+          className="page-arrow"
+          onClick={pageForward}></div>
       </div>
-      <div className="modal-overlay" onClick={closeModal}></div>
+      <div className="help-modal-overlay" onClick={closeModal}></div>
     </>
   );
 };
