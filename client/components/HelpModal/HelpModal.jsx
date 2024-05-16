@@ -42,7 +42,7 @@ export const HelpModal = () => {
     </p>,
     <p className='blurb'>
       <h4>The How</h4>
-      <div>The next few pages will tell you how to navigate the site, enjoy!</div>
+      <div>-- In Development --</div>
     </p>
   ]
 
