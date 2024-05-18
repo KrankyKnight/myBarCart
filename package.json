@@ -3,8 +3,9 @@
   "description": "Get recipes that you can make RIGHT NOW, no store trips",
   "name": "my-bar-cart",
   "scripts": {
-    "start": "NODE_ENV=production node server/server.js",
-    "build": "webpack",
+    "clean": "rm -rf ./build",
+    "build": "npm run clean && webpack --config webpack.config.js",
+    "start": "npm run build && NODE_ENV=production node server/server.js",
     "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --hot --progress --color\" \"cross-env NODE_ENV=development nodemon ./server/server.js\"",
     "lint": "eslint \"client/**\""
   },
