@@ -2,5 +2,6 @@
 node_modules/
 build/
 .env.*
+!.env.local.example
 myBarCartDB.sql
 GOALS.md
