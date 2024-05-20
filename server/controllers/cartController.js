@@ -1,4 +1,4 @@
-const db = require('../db/model');
+import db from '../db/model.js';
 
 const cartController = {
   filterRecipes: async (req, res, next) => {
@@ -63,4 +63,4 @@ const cartController = {
   }
 };
 
-module.exports = cartController;
+export default cartController;

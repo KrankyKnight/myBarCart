@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 const recipeController = {
 
@@ -43,4 +43,4 @@ const recipeController = {
 
 };
 
-module.exports = recipeController;
+export default recipeController;

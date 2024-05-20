@@ -1,15 +1,17 @@
 //reminder npx nodemon
-const path = require('path');
-const express = require('express');
-const cors = require('cors');
+import path from 'path';
+import express from 'express';
+import cors from 'cors';
+import React from 'react';
+import { renderToPipeableStream } from 'react-dom/server';
+import { Main } from '../client/Main.jsx';
+import ingredientsRouter from './routers/ingredientsRouter.js';
+import recipesRouter from './routers/recipesRouter.js';
+import dbRouter from './routers/dbRouter.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV;
-
-const ingredientsRouter = require('./routers/ingredientsRouter.js');
-const recipesRouter = require('./routers/recipesRouter.js');
-const dbRouter = require('./routers/dbRouter.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +21,18 @@ if(NODE_ENV === 'development') {
 
 /* STATIC */
 
-app.use('/', express.static(path.join(__dirname, '../build')));
+app.get('/', (req, res) => {
+  const stream = renderToPipeableStream(<Main />, {
+    bootstrapScripts: ['/bundle.js'],
+    onShellReady() {
+      res.status(200);
+      res.setHeader('Content-type', 'text/html');
+      stream.pipe(res);
+    },
+  });
+});
+
+app.use(express.static(path.resolve('build', 'client')))
 
 /* ROUTING */
 
@@ -32,6 +45,7 @@ app.use('/db', dbRouter);
 app.use('*', (req, res) => res.status(404));
 
 app.use((err, req, res, next) => {
+  console.log('err', err);
   const defaultError = {
     log: 'Express error handler caught unknown middleware error',
     status: 500,
@@ -42,4 +56,4 @@ app.use((err, req, res, next) => {
   return res.status(errorObject.status || 500).json(errorObject.message);
 });
 
-module.exports = app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

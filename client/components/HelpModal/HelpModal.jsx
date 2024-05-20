@@ -14,36 +14,46 @@ export const HelpModal = () => {
   let pageButtonClicked = false;
   
   const pages = [
-    <p>
+    <div>
       <h4>Contents</h4>
-      <div className='tutorial-info'>- Use the arrows to navigate between tutorial pages -</div>
-      <div className='tutorial-info'>- Click a link below to jump directly to a page -</div>
-      <ol id='table-of-contents-list'>
-        <li className='content-link' onClick={() => setPage(1)}>1. Welcome to myBarCart</li>
-        <li className='content-link' onClick={() => setPage(2)}>2. The What</li>
-        <li className='content-link' onClick={() => setPage(3)}>3. The Why</li>
-        <li className='content-link' onClick={() => setPage(4)}>4. The How</li>
-      </ol>
-    </p>,
-    <p className='blurb'>
+      <p>
+        <span className='tutorial-info'>- Use the arrows to navigate between tutorial pages -</span><br/>
+        <span className='tutorial-info'>- Click a link below to jump directly to a page -</span><br/>
+        <ol id='table-of-contents-list'>
+          <li className='content-link' onClick={() => setPage(1)}>1. Welcome to myBarCart</li>
+          <li className='content-link' onClick={() => setPage(2)}>2. The What</li>
+          <li className='content-link' onClick={() => setPage(3)}>3. The Why</li>
+          <li className='content-link' onClick={() => setPage(4)}>4. The How</li>
+        </ol>
+      </p>
+    </div>,
+    <div className='blurb'>
       <h4>Welcome to myBarCart</h4>
-      <div>This app is brought to you thanks to the wonderful devs at <em>thecocktailDB</em></div>
-      <div>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a> and support them on their patreon at <a href='https://www.patreon.com/thedatadb'>www.patreon.com/thedatadb</a></div>
-    </p>,
-    <p className='blurb'>
+      <p>
+        <span>This app is brought to you thanks to the wonderful devs at <em>thecocktailDB</em></span><br/>
+        <span>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a> and support them on their patreon at <a href='https://www.patreon.com/thedatadb'>www.patreon.com/thedatadb</a></span><br/>
+      </p>
+    </div>,
+    <div className='blurb'>
       <h4>The What</h4>
-      <div>myBarCart is a recipe generator.</div>
-      <div>Instead of looking up recipes, though, myBarCart shows you recipes based on the ingredients you have.</div>
-    </p>,
-    <p className='blurb'>
+      <p>
+        <span>myBarCart is a recipe generator.</span><br/>
+        <span>Instead of looking up recipes, though, myBarCart shows you recipes based on the ingredients you have.</span><br/>
+      </p>
+    </div>,
+    <div className='blurb'>
       <h4>The Why</h4>
-      <div>Short answer: Sometime you don't want to go to the store.</div>
-      <div>myBarCart giver you the option to make something without needing to go out for ingredients!</div>
-    </p>,
-    <p className='blurb'>
+      <p>
+        <span>Short answer: Sometime you don't want to go to the store.</span><br/>
+        <span>myBarCart giver you the option to make something without needing to go out for ingredients!</span><br/>
+      </p>
+    </div>,
+    <div className='blurb'>
       <h4>The How</h4>
-      <div>-- In Development --</div>
-    </p>
+      <p>
+        <span>-- In Development --</span><br/>
+      </p>
+    </div>
   ]
 
   const pageMax = pages.length - 1;
