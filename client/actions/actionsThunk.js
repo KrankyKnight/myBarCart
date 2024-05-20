@@ -2,7 +2,7 @@
  * @description Redux Thunk actions
  */
 
-import * as action from './actions';
+import * as action from './actions.js';
 
 export const fetchDbStatusThunk = () => {
   return async (dispatch) => {

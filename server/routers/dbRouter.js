@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
+import dbController from '../controllers/dbController.js';
 
-const dbController = require('../controllers/dbController');
+const router = express.Router();
 
 router.get('/', dbController.testConnection, (req, res) => {
   res.status(200).json(res.locals.dbTest);
 });
 
-module.exports = router;
+export default router;

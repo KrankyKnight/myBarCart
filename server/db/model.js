@@ -1,6 +1,8 @@
-const mysql = require('mysql2/promise');
+import mysql from 'mysql2/promise';
+import dotenv from 'dotenv';
+
 const envPath = process.env.NODE_ENV === 'production' ? '.env.local' : '.env.local.test'
-require('dotenv').config({path: [envPath]});
+dotenv.config({path: [envPath]});
 
 const pool = mysql.createPool({
   connectionLimit: 10,
@@ -12,7 +14,7 @@ const pool = mysql.createPool({
   idleTimeout: 10000,
 });
 
-module.exports = {
+export default {
   test: async () => {
     return await pool.getConnection()
       .then((connection) => {

@@ -1,15 +1,14 @@
 //reminder npx nodemon
-const path = require('path');
-const express = require('express');
-const cors = require('cors');
+import path from 'path';
+import express from 'express';
+import cors from 'cors';
+import ingredientsRouter from './routers/ingredientsRouter.js';
+import recipesRouter from './routers/recipesRouter.js';
+import dbRouter from './routers/dbRouter.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV;
-
-const ingredientsRouter = require('./routers/ingredientsRouter.js');
-const recipesRouter = require('./routers/recipesRouter.js');
-const dbRouter = require('./routers/dbRouter.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -42,4 +41,4 @@ app.use((err, req, res, next) => {
   return res.status(errorObject.status || 500).json(errorObject.message);
 });
 
-module.exports = app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

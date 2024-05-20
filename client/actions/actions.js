@@ -21,7 +21,6 @@ export const fetchDbStatusFailure = createAction('FETCH_DB_STATUS_FAILURE');
 export const serverError = createAction('SERVER_ERROR');
 export const displayModal = createAction('DISPLAY_MODAL');
 export const removeModal = createAction('REMOVE_MODAL');
-
 export const modalOn = createAction('MODAL_ON');
 export const modalOff = createAction('MODAL_OFF');
 export const changeHelpModalPage =  createAction('CHANGE_HELP_MODAL_PAGE');

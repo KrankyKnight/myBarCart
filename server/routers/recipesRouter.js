@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
+import cartController from '../controllers/cartController.js';
+import recipeController from '../controllers/recipeController.js';
 
-const cartController = require('../controllers/cartController.js');
-const recipeController = require('../controllers/recipeController.js');
+const router = express.Router();
 
 router.post('/getRecipeList', cartController.filterRecipes, (req, res) => {
   return res.status(200).json(res.locals.recipeIdList);
@@ -12,4 +12,4 @@ router.post('/getRecipes', recipeController.getRecipes, (req, res) => {
   return res.status(200).json(res.locals.recipeArray);
 })
 
-module.exports = router;
+export default router;

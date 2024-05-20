@@ -1,4 +1,4 @@
-const db = require('../db/model');
+import db from '../db/model.js';
 
 const dbController = {
 
@@ -23,4 +23,4 @@ const dbController = {
   }
 }
 
-module.exports = dbController;
+export default dbController;
