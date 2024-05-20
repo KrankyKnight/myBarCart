@@ -3,14 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractplugin = require('mini-css-extract-plugin');
 
 const serverConfig = {
-  mode: 'production',
+  mode: 'development',
+  target: 'node18.18',
   entry: './server/server.js',
   output: {
-    filename: 'server.js',
+    filename: 'server.cjs',
     path: path.resolve(__dirname, 'build', 'server'),
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: 'index.html' }),
     new MiniCssExtractplugin()
   ],
   module : {
@@ -42,11 +42,12 @@ const serverConfig = {
 }
 
 const clientConfig = {
-  mode: 'production',
-  entry: './client/index.jsx',
+  mode: 'development',
+  target: 'web',
+  entry: './client/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'build', 'client'),
   },
   plugins: [
     new HtmlWebpackPlugin({ template: 'index.html' }),
@@ -54,8 +55,7 @@ const clientConfig = {
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, 'build'),
-      publicPath: '/server/server.js',
+      directory: path.join(__dirname, 'build', 'client'),
     },
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -99,3 +99,5 @@ const clientConfig = {
     ]
   }
 };
+
+module.exports = [clientConfig, serverConfig];

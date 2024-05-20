@@ -18,7 +18,7 @@ if(NODE_ENV === 'development') {
 
 /* STATIC */
 
-app.use('/', express.static(path.join(__dirname, '../build')));
+app.use('/', express.static(path.resolve('build', 'client')));
 
 /* ROUTING */
 

@@ -7,11 +7,10 @@ const serverConfig = {
   target: 'node18.18',
   entry: './server/server.js',
   output: {
-    filename: 'server.js',
+    filename: 'server.cjs',
     path: path.resolve(__dirname, 'build', 'server'),
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: 'index.html' }),
     new MiniCssExtractplugin()
   ],
   module : {
