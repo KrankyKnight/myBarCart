@@ -49,12 +49,12 @@ export const MainDisplay = () => {
     <div id='MainDisplay' className={`api ${viewMode} ${`recipe${recipes === "pending" ? recipes : recipes.length}`}`}>
       {
         viewMode === 'none' ? 
-          <div className='intro-blurb'>
-            <p className='blurb'>
-              <h4>Welcome to myBarCart</h4> 
-              <div>This app is brought to you thanks to the wonderful devs at <em>thecocktailDB</em></div>
-              <div>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a> and support them on their patreon at <a href='https://www.patreon.com/thedatadb'>www.patreon.com/thedatadb</a></div>
-              <div>Click the ? in the top left for a tutorial on how to use the site</div>
+          <div className='intro-blurb blurb'>
+            <h4>Welcome to myBarCart</h4> 
+            <p>
+              <span>This app is brought to you thanks to the wonderful devs at <em>thecocktailDB</em></span><br></br>
+              <span>Visit their website at <a href='https://www.thecocktaildb.com/'>www.thecocktaildb.com/</a> and support them on their patreon at <a href='https://www.patreon.com/thedatadb'>www.patreon.com/thedatadb</a></span><br></br>
+              <span>Click the ? in the top left for a tutorial on how to use the site</span><br></br>
             </p>
           </div>
         : viewMode === 'ingredients' ? 

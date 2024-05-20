@@ -50,7 +50,6 @@ const clientConfig = {
     path: path.resolve(__dirname, 'build', 'client'),
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: 'index.html' }),
     new MiniCssExtractplugin()
   ],
   devServer: {
