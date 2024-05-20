@@ -1,7 +1,7 @@
 .DS_Store
 node_modules/
 build/*
-.env.local
-.env.local.test
+.env.*
+!.env.local.example
 myBarCartDB.sql
 GOALS.md
